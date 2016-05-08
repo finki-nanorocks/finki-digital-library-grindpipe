@@ -1,1 +1,1 @@
-# -digital-library-of-image-imagemagick-gui
+# Digital-library-of-images-imagemagick-gui
