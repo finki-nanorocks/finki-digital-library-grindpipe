@@ -7,6 +7,8 @@ The purpose of this document is to present a detailed description of the applica
 Grindpipe will be a software system designed to create collections of photos as well as their editing and adding metadata to images and collections. The idea to build the software system comes from the ImageMagic application. This application will be designed to establish greater accessibility between users using and receiving user interface and thus facilitating the manner of use and additional creation of local digital library.
 
 Specifically, this system will be designed to enable users to process images faster and do their collections in their PC. The system will include processing and rotate images, convert to different formats, increasing or reducing the size of images, convert images to black and white look. Additionally, the system will depend on the Windows operating systems and the ImageMagic application designed for windows operating systems.
+
+
 General Description
 
 The application will be free and open source, licensed under the license of the General Public License. Also it will be specifically designed for computers running windows operating system and is based on an existing application, ImageMagic.
