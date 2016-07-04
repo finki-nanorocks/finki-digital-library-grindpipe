@@ -1,5 +1,5 @@
 
-# GRINDPIPE
+
 ![alt tag](http://grindpipe.ml/assets/images/logo-427x432-41.png)
 
 #Introduction
@@ -23,7 +23,7 @@ The application needs to run on devices with a minimum of 2 GB of RAM and at lea
 
 http://www.grindpipe.ml
 
-
+# GRINDPIPE
 Authors:
 * Andrej Nankov [@ultimatenano] (https://github.com/ultimatenano)
 * Aleksandar Babic [@Babic22] (https://github.com/Babic22)
