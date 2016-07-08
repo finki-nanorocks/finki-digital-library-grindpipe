@@ -29,3 +29,13 @@ C:\Users\voknan\Desktop\grindpipe-FULL\PART 1\grindpipe_app\grindpipe_app\obj\De
 C:\Users\voknan\Desktop\grindpipe-FULL\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Help.resources
 C:\Users\voknan\Desktop\grindpipe-FULL\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Properties.Resources.resources
 C:\Users\voknan\Desktop\grindpipe-FULL\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.csproj.GenerateResource.Cache
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\bin\Debug\grindpipe_app.exe.config
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.exe
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.pdb
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\bin\Debug\grindpipe_app.exe
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\bin\Debug\grindpipe_app.pdb
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.csprojResolveAssemblyReference.cache
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Editor.resources
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Help.resources
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Properties.Resources.resources
+C:\Users\voknan\Desktop\grindpipe-FULL\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.csproj.GenerateResource.Cache

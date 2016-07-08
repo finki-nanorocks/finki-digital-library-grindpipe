@@ -106,7 +106,7 @@ namespace grindpipe_app
         public string threshold_image(string img_path, string gen_img)
         {
             string img = Path.GetFileName(img_path); // get image from path for txt_path.Text
-            return "convert "+img+" -threshold 5 "+gen_img+"\n";
+            return "convert " + img + " -channel R -threshold 50% -channel G -threshold 50% -channel B -threshold 50% " + gen_img + "\n";
         }
         public string black_white(string img_path, string gen_img)
         {
