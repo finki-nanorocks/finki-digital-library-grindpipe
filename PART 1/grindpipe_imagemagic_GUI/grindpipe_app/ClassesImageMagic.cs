@@ -12,7 +12,7 @@ namespace grindpipe_app
     
     class ClassesImageMagic
     {
-        public string START_PATH_BAT = AppDomain.CurrentDomain.BaseDirectory + "bat_file.bat"; // finding path of the application
+        public string START_PATH_BAT = Path.GetTempPath() + "temp_grindpipe.bat"; // finding path of the application
         public string FINISH_PATH = @"start """" /d";
 
         public void MAKE_BAT_AND_START(string start,string new_s_path,string code_fin)

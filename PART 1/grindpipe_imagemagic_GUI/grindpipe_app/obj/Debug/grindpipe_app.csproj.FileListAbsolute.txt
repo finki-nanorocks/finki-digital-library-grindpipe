@@ -7,7 +7,6 @@ C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.cspr
 C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.exe
 C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.pdb
 C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Editor.resources
-C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.grindpipe_db.resources
 C:\Users\voknan\Desktop\grindpipe-FULL\grindpipe_app\grindpipe_app\bin\Debug\grindpipe_app.exe.config
 C:\Users\voknan\Desktop\grindpipe-FULL\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.exe
 C:\Users\voknan\Desktop\grindpipe-FULL\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.pdb
@@ -31,3 +30,4 @@ C:\Users\voknan\Desktop\grindpipe-FULL\GITHUB\dig-lib-of-img-imgmagick-gui-GRIND
 C:\Users\voknan\Desktop\grindpipe-FULL\GITHUB\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Help.resources
 C:\Users\voknan\Desktop\grindpipe-FULL\GITHUB\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Properties.Resources.resources
 C:\Users\voknan\Desktop\grindpipe-FULL\GITHUB\dig-lib-of-img-imgmagick-gui-GRINDPIPE\PART 1\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.csproj.GenerateResource.Cache
+C:\Users\voknan\Desktop\grindpipe_app\grindpipe_app\obj\Debug\grindpipe_app.Help.resources
