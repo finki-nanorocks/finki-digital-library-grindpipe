@@ -12,7 +12,7 @@ namespace grindpipe_app
         public DateTime data { get; set; }
         public string name { get; set; }
         public string creator { get; set; }
-        public List<string> keywords { get; set; }
+        public string keyword { get; set; }
         public string inventory { get; set; } // opis
         public string language { get; set; }
 

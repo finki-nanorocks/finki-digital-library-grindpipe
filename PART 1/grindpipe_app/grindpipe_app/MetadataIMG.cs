@@ -8,14 +8,17 @@ namespace grindpipe_app
 {
     class MetadataIMG
     {
-        public grindpipe_app.Metadata obj { get; set; }
-        public string nameImg { get; set; }
+        public DateTime data { get; set; }
+        public string name { get; set; }
+        public string creator { get; set; }
+        public string keyword { get; set; }
+        public string inventory { get; set; } // opis
+        public string language { get; set; }
         public string width { get; set; }
         public string height { get; set; }
         public string extension { get; set; }
-        public string resourses_type { get; set; }
-        public string source { get; set; }
-        public bool allow_print { get; set; }
+        public string path { get; set; }
+        public int allow_print { get; set; }
 
        
     }

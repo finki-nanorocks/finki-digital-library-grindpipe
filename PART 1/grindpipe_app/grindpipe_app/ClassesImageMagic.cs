@@ -21,12 +21,16 @@ namespace grindpipe_app
             File.WriteAllText(start, "cd /d " +  new_s_path + "\n" + code_fin);
             System.Diagnostics.Process.Start(start);
         }
-        public void btn_info_and_view(string txt_path, string fin,int type)
+        public void btn_info_and_view(string txt_path, string fin,int type,bool deff)
         {
             if (txt_path != "")
             {
                 string pom_path = Path.GetFileName(txt_path); // get image from path for txt_path.Text
                 string code = (type == 1) ? info_image(pom_path) : view_image(pom_path); //ternary operator 
+                if(deff)
+                {
+                    code = view_image_deff(pom_path);
+                }
                 int ind_pom_path = txt_path.IndexOf(pom_path);
                 string new_s = txt_path.Remove(ind_pom_path);
 
@@ -103,10 +107,24 @@ namespace grindpipe_app
             string img = Path.GetFileName(img_path); // get image from path for txt_path.Text
             return "convert " + img + " " + img + "\n";
         }
+        public string water_effect(string img_path,string img_gen)
+        {
+            String full_code = "";
+            System.Drawing.Image imgWH = System.Drawing.Image.FromFile(img_path);
+            //MessageBox.Show("Width: " + img.Width + ", Height: " + img.Height);
+            string img = Path.GetFileName(img_path);
+            full_code += "convert -size " + imgWH.Width + "x" + imgWH.Height + " gradient: -evaluate sin 16 pom1.png\n";
+            full_code += "composite pom1.png " + img + " -displace 10x10 pom2.png\n";
+            full_code += "convert pom2.png " + img + " +swap -append " + img_gen + "\n";
+            full_code += "del pom1.png\n";
+
+            return full_code;
+        }
+
         public string threshold_image(string img_path, string gen_img)
         {
             string img = Path.GetFileName(img_path); // get image from path for txt_path.Text
-            return "convert " + img + " -channel R -threshold 50% -channel G -threshold 50% -channel B -threshold 50% " + gen_img + "\n";
+            return "convert "+img+" -threshold 5 "+gen_img+"\n";
         }
         public string black_white(string img_path, string gen_img)
         {
@@ -116,6 +134,10 @@ namespace grindpipe_app
         public string view_image(string img)
         {
             return "imdisplay " + img+"\n";
+        }
+        public string view_image_deff(string img)
+        {
+            return "start " + img + "\n";
         }
         public string info_image(string img)
         {
