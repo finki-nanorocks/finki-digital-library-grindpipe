@@ -41,10 +41,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.md_dl = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.createDigitalLibraryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutUsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.communityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contactUsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_del_sel_db = new System.Windows.Forms.Button();
             this.btn_del_sel_coll = new System.Windows.Forms.Button();
             this.btn_del_sel_img = new System.Windows.Forms.Button();
@@ -58,13 +64,21 @@
             this.bnt_close = new System.Windows.Forms.Button();
             this.btn_keyword = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.aboutUsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.documentationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.communityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactUsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.createDigitalLibraryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip10 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip11 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip12 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip13 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip14 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip15 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip16 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip17 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +151,7 @@
             this.btn_new_dl.Size = new System.Drawing.Size(140, 29);
             this.btn_new_dl.TabIndex = 7;
             this.btn_new_dl.Text = "Create digital library";
+            this.toolTip15.SetToolTip(this.btn_new_dl, "Create a digital library in your local computer");
             this.btn_new_dl.UseVisualStyleBackColor = true;
             // 
             // btn_new_coll
@@ -147,6 +162,7 @@
             this.btn_new_coll.Size = new System.Drawing.Size(144, 29);
             this.btn_new_coll.TabIndex = 8;
             this.btn_new_coll.Text = "New collection";
+            this.toolTip16.SetToolTip(this.btn_new_coll, "Create a collection in your currently selected digital library");
             this.btn_new_coll.UseVisualStyleBackColor = true;
             // 
             // btn_new_img
@@ -157,6 +173,7 @@
             this.btn_new_img.Size = new System.Drawing.Size(144, 29);
             this.btn_new_img.TabIndex = 9;
             this.btn_new_img.Text = "Add Image";
+            this.toolTip17.SetToolTip(this.btn_new_img, "Add a new image to your currently selected collection\r\n");
             this.btn_new_img.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -167,7 +184,7 @@
             this.button4.Size = new System.Drawing.Size(144, 31);
             this.button4.TabIndex = 10;
             this.button4.Text = "Add metadata";
-            this.toolTip1.SetToolTip(this.button4, "Add metadata to the selected digital library\r\n\r\n\r\n");
+            this.md_dl.SetToolTip(this.button4, "Add metadata to the selected digital library\r\n\r\n\r\n");
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -192,9 +209,9 @@
             this.toolTip3.SetToolTip(this.button6, "Add metadata to the selected image");
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // toolTip1
+            // md_dl
             // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.md_dl.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // menuStrip1
             // 
@@ -211,6 +228,42 @@
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // createDigitalLibraryToolStripMenuItem1
+            // 
+            this.createDigitalLibraryToolStripMenuItem1.Name = "createDigitalLibraryToolStripMenuItem1";
+            this.createDigitalLibraryToolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
+            this.createDigitalLibraryToolStripMenuItem1.Text = "Create digital library";
+            // 
+            // aboutUsToolStripMenuItem1
+            // 
+            this.aboutUsToolStripMenuItem1.Name = "aboutUsToolStripMenuItem1";
+            this.aboutUsToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
+            this.aboutUsToolStripMenuItem1.Text = "About us";
+            // 
+            // documentationToolStripMenuItem1
+            // 
+            this.documentationToolStripMenuItem1.Name = "documentationToolStripMenuItem1";
+            this.documentationToolStripMenuItem1.Size = new System.Drawing.Size(102, 20);
+            this.documentationToolStripMenuItem1.Text = "Documentation";
+            // 
+            // communityToolStripMenuItem1
+            // 
+            this.communityToolStripMenuItem1.Name = "communityToolStripMenuItem1";
+            this.communityToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
+            this.communityToolStripMenuItem1.Text = "Community";
+            // 
+            // contactUsToolStripMenuItem1
+            // 
+            this.contactUsToolStripMenuItem1.Name = "contactUsToolStripMenuItem1";
+            this.contactUsToolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
+            this.contactUsToolStripMenuItem1.Text = "Contact us";
+            // 
+            // quitToolStripMenuItem1
+            // 
+            this.quitToolStripMenuItem1.Name = "quitToolStripMenuItem1";
+            this.quitToolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
+            this.quitToolStripMenuItem1.Text = "Quit";
+            // 
             // btn_del_sel_db
             // 
             this.btn_del_sel_db.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -219,6 +272,7 @@
             this.btn_del_sel_db.Size = new System.Drawing.Size(186, 23);
             this.btn_del_sel_db.TabIndex = 14;
             this.btn_del_sel_db.Text = "Delete selected digital library";
+            this.toolTip14.SetToolTip(this.btn_del_sel_db, "Delete currently selected digital library");
             this.btn_del_sel_db.UseVisualStyleBackColor = true;
             // 
             // btn_del_sel_coll
@@ -229,6 +283,7 @@
             this.btn_del_sel_coll.Size = new System.Drawing.Size(186, 23);
             this.btn_del_sel_coll.TabIndex = 15;
             this.btn_del_sel_coll.Text = "Delete selected collection";
+            this.toolTip13.SetToolTip(this.btn_del_sel_coll, "Delete currently selected collection");
             this.btn_del_sel_coll.UseVisualStyleBackColor = true;
             // 
             // btn_del_sel_img
@@ -239,6 +294,7 @@
             this.btn_del_sel_img.Size = new System.Drawing.Size(186, 23);
             this.btn_del_sel_img.TabIndex = 16;
             this.btn_del_sel_img.Text = "Delete selected image";
+            this.toolTip12.SetToolTip(this.btn_del_sel_img, "Delete currently selected image");
             this.btn_del_sel_img.UseVisualStyleBackColor = true;
             // 
             // btn_img_editor
@@ -249,6 +305,7 @@
             this.btn_img_editor.Size = new System.Drawing.Size(186, 25);
             this.btn_img_editor.TabIndex = 17;
             this.btn_img_editor.Text = "Image editor";
+            this.toolTip1.SetToolTip(this.btn_img_editor, "Open Grindpipe Imagemagick GUI editor\r\n");
             this.btn_img_editor.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -271,6 +328,7 @@
             this.btn_view_sel.Size = new System.Drawing.Size(186, 23);
             this.btn_view_sel.TabIndex = 19;
             this.btn_view_sel.Text = "View digital library metadata";
+            this.toolTip11.SetToolTip(this.btn_view_sel, "View the metadata of the selected digital library");
             this.btn_view_sel.UseVisualStyleBackColor = true;
             this.btn_view_sel.Click += new System.EventHandler(this.btn_view_sel_Click);
             // 
@@ -282,6 +340,7 @@
             this.button12.Size = new System.Drawing.Size(186, 23);
             this.button12.TabIndex = 20;
             this.button12.Text = "View collection metadata";
+            this.toolTip10.SetToolTip(this.button12, "View the metadata of the selected collection");
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button13
@@ -292,6 +351,7 @@
             this.button13.Size = new System.Drawing.Size(186, 23);
             this.button13.TabIndex = 21;
             this.button13.Text = "View image metadata";
+            this.toolTip9.SetToolTip(this.button13, "View the metadata of the selected image");
             this.button13.UseVisualStyleBackColor = true;
             // 
             // toolTip4
@@ -320,6 +380,7 @@
             this.bnt_close.Size = new System.Drawing.Size(186, 31);
             this.bnt_close.TabIndex = 23;
             this.bnt_close.Text = "Close";
+            this.toolTip7.SetToolTip(this.bnt_close, "Close the Grindpipe digital library maker application");
             this.bnt_close.UseVisualStyleBackColor = true;
             // 
             // btn_keyword
@@ -329,6 +390,7 @@
             this.btn_keyword.Size = new System.Drawing.Size(186, 23);
             this.btn_keyword.TabIndex = 24;
             this.btn_keyword.Text = "Search image by keyword";
+            this.toolTip8.SetToolTip(this.btn_keyword, "Seach image based on its metadata keyword");
             this.btn_keyword.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -338,43 +400,8 @@
             this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 25;
             this.button1.Text = "Search";
+            this.toolTip6.SetToolTip(this.button1, "Search for your PC for images");
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // aboutUsToolStripMenuItem1
-            // 
-            this.aboutUsToolStripMenuItem1.Name = "aboutUsToolStripMenuItem1";
-            this.aboutUsToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
-            this.aboutUsToolStripMenuItem1.Text = "About us";
-            // 
-            // documentationToolStripMenuItem1
-            // 
-            this.documentationToolStripMenuItem1.Name = "documentationToolStripMenuItem1";
-            this.documentationToolStripMenuItem1.Size = new System.Drawing.Size(102, 20);
-            this.documentationToolStripMenuItem1.Text = "Documentation";
-            // 
-            // communityToolStripMenuItem1
-            // 
-            this.communityToolStripMenuItem1.Name = "communityToolStripMenuItem1";
-            this.communityToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
-            this.communityToolStripMenuItem1.Text = "Community";
-            // 
-            // contactUsToolStripMenuItem1
-            // 
-            this.contactUsToolStripMenuItem1.Name = "contactUsToolStripMenuItem1";
-            this.contactUsToolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
-            this.contactUsToolStripMenuItem1.Text = "Contact us";
-            // 
-            // createDigitalLibraryToolStripMenuItem1
-            // 
-            this.createDigitalLibraryToolStripMenuItem1.Name = "createDigitalLibraryToolStripMenuItem1";
-            this.createDigitalLibraryToolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
-            this.createDigitalLibraryToolStripMenuItem1.Text = "Create digital library";
-            // 
-            // quitToolStripMenuItem1
-            // 
-            this.quitToolStripMenuItem1.Name = "quitToolStripMenuItem1";
-            this.quitToolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
-            this.quitToolStripMenuItem1.Text = "Quit";
             // 
             // textBox1
             // 
@@ -383,6 +410,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(344, 29);
             this.textBox1.TabIndex = 26;
+            this.toolTip5.SetToolTip(this.textBox1, "Enter image name for searching");
             // 
             // Grindpipe_dl
             // 
@@ -442,7 +470,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip md_dl;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -466,5 +494,19 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.ToolTip toolTip8;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip15;
+        private System.Windows.Forms.ToolTip toolTip16;
+        private System.Windows.Forms.ToolTip toolTip17;
+        private System.Windows.Forms.ToolTip toolTip14;
+        private System.Windows.Forms.ToolTip toolTip13;
+        private System.Windows.Forms.ToolTip toolTip12;
+        private System.Windows.Forms.ToolTip toolTip11;
+        private System.Windows.Forms.ToolTip toolTip10;
+        private System.Windows.Forms.ToolTip toolTip9;
     }
 }

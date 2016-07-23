@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="toolTip15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>326, 56</value>
+  </metadata>
+  <metadata name="toolTip16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>429, 56</value>
+  </metadata>
+  <metadata name="toolTip17.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>532, 56</value>
+  </metadata>
+  <metadata name="md_dl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -129,7 +138,40 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>308, 17</value>
   </metadata>
+  <metadata name="toolTip14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>223, 56</value>
+  </metadata>
+  <metadata name="toolTip13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>120, 56</value>
+  </metadata>
+  <metadata name="toolTip12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>908, 17</value>
+  </metadata>
+  <metadata name="toolTip11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1205, 17</value>
+  </metadata>
+  <metadata name="toolTip10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1102, 17</value>
+  </metadata>
+  <metadata name="toolTip9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1005, 17</value>
+  </metadata>
   <metadata name="toolTip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>423, 17</value>
+  </metadata>
+  <metadata name="toolTip7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>714, 17</value>
+  </metadata>
+  <metadata name="toolTip8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>811, 17</value>
+  </metadata>
+  <metadata name="toolTip6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>617, 17</value>
+  </metadata>
+  <metadata name="toolTip5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>520, 17</value>
   </metadata>
 </root>
