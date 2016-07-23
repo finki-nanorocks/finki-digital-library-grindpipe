@@ -70,7 +70,7 @@ namespace grindpipe_app
             DialogResult dr = ofd.ShowDialog();
             string path = ofd.FileName.ToString(); // zema pateka od izbraj fajl
 
-            if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico"))
+            if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico") || path.Contains(".JPG") || path.Contains(".PNG") || path.Contains(".GIF") || path.Contains(".ICO"))
             {
                 txt_path.Text = ofd.FileName.ToString(); // ja pokazuva celosnata pateka od izbraj fajl
                 lbl_path1.Text = "";
@@ -136,6 +136,7 @@ namespace grindpipe_app
                     {
                         MessageBox.Show("It must consist only numerical values in text fields width and height");
                         txt_width.Text = txt_height.Text = "";
+                        return;
                     }
 
                 }
