@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
-
+using System.Windows.Forms;
+using System.Drawing;
 namespace grindpipe_app
 {
     class ClassesDigitalLibrary
@@ -15,10 +16,97 @@ namespace grindpipe_app
         public string START_PATH_BAT_DL = Path.GetTempPath() + "digital_library_file.bat"; // finding path of the application
         public string FINISH_PATH_DL = @"start """" /d";
 
+        public string ShowDialog(string text, string caption, string type = "dl_")
+        {
+            Form prompt = new Form()
+            {
+                Width = 380,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 30, Top = 20, Text = text };
+            Label textLabel1 = new Label() { Left = 7, Top = 55, Text = type };
+            TextBox textBox = new TextBox() { Left = 30, Top = 50, Width = 300 };
+            Button confirmation = new Button() { Text = "Add", Left = 231, Width = 100, Top = 75, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.Controls.Add(textLabel1);
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
+        public string ShowKeyword(string text, string caption)
+        {
+            Form prompt = new Form()
+            {
+                Width = 380,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 30, Top = 20, Text = text };
+            ComboBox cb = new ComboBox() { Left = 30, Top = 50, Width = 300 };
+            Button confirmation = new Button() { Text = "Add keyword", Left = 231, Width = 100, Top = 75, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            string[] tmp_l = { "sport", "love", "fanny", "programming", "newyear", "sex", "girls", "boys", "vacation", "faculty", "cars", "nature", "drinks", "party", "space", "technology", "tv", "shopping","beauty","style","other" }; 
+            
+            cb.Items.AddRange(tmp_l);
+
+            prompt.Controls.Add(cb);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            try
+            {
+                return prompt.ShowDialog() == DialogResult.OK ? cb.SelectedItem.ToString() : "other";
+            }catch(Exception err)
+            {
+              //  MessageBox.Show("You must select keyword.");
+                return "";
+            }
+        }
+        public string library_new_metod(string text_dialog, string caption_dialog,string f_description)
+        {
+            FolderBrowserDialog f = new FolderBrowserDialog();
+            f.Description = f_description;
+            f.ShowNewFolderButton = false;
+            f.ShowDialog();
+            string path = f.SelectedPath.ToString();
+            if (path == "" || path == null)
+            {
+                MessageBox.Show("Failed, to create.");
+                return "";
+            }
+            string name = ShowDialog(text_dialog, caption_dialog);
+            if(name == "" || name == null || path == "" || path == null)
+            {
+                MessageBox.Show("Failed, to create.");
+                return "";
+            }
+            else
+            {
+                insert_to_library("dl_" + name, path.ToString());
+                return "dl_" + name + " "+path.ToString();
+            }
+        }
+
+
+
+
 
         public string make_dir(string name)
         {
             return "mkdir " + name;
+        }
+        public string move_file(string first_path, string last_path) // from path to path 
+        {
+            return "move " + first_path + " " + last_path;
         }
         public void create_digital_library(string apsolut_path, string library_name)
         {
@@ -26,15 +114,29 @@ namespace grindpipe_app
             code += make_dir(library_name);
             classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, apsolut_path, code);
         }
+        public void current_digital_library_overview_and_collection(string apsolut_path, string library_name)
+        {
+            string code = "start "+library_name;
+            classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, apsolut_path, code);
+        }
+        public void current_image_move(string image_name,string image_path, string collection_path)
+        {
+            string code = "copy " + image_name+" "+collection_path;
+            classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, image_path, code);
+        }
         public void create_collection(string apsolut_path, string collection_name)
         {
             create_digital_library(apsolut_path, collection_name);
         }
-        public string add_image()
+        public string add_image(string image_path, string collection_path)
         {
-            return "";
-
+            string code = "";
+            code += move_file(image_path, collection_path);
+            return code;
         }
+
+
+
 
 
 
@@ -43,43 +145,132 @@ namespace grindpipe_app
         public static string database_path = System.Configuration.ConfigurationManager.ConnectionStrings["grindpipe_db"].ConnectionString.ToString();
         SqlConnection con = new SqlConnection(database_path.ToString());
 
-        public List<string> select_all_from_library(string library_name)
+        public List<string> select_all_from_library()
         {
             List<string> l = new List<string>();
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM library", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@library_name", library_name);
-            SqlDataReader r = cmd.ExecuteReader();
-            while (r.Read())
+            try
             {
-                l.Add(r.GetString(1) + " " + r.GetString(4)); // return list of library_name and library_path
+                SqlCommand cmd = new SqlCommand("SELECT * FROM library", con);
+                con.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    l.Add(r.GetString(1) + " " + r.GetString(4)); // return list of library_name and library_path
+                }
+                con.Close();
+                return l;
+                
+            }catch(Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't load library data from database.");
+                return l;
+                
             }
-
-            return l;
-            con.Close();
-
         }
         public List<string> select_from_collection_where_library_name_is(string library_name)
         {
+         
             List<string> l = new List<string>();
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE library_name=@library_name", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@library_name", library_name);
-            SqlDataReader r = cmd.ExecuteReader();
-            while (r.Read())
+            try
             {
-                l.Add(r.GetString(2) + " " + r.GetString(4)); // return list of library_name and library_path
+                SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    l.Add(r.GetString(2) + " " + r.GetString(4)); // return list of library_name and library_path
+                }
+                con.Close();
+                return l;
+                
             }
+            catch(Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't load collections from database.");
+                return l;
+            }
+        }
+        public string select_collection_path_for_collection_name(string collection_name)
+        {
 
-            return l;
-            con.Close();
+            string path = "";
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE collection_name=@collection_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    path += r.GetString(4); // return string of library_path
+                }
+                con.Close();
+                return path;
 
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't load collections path from database.");
+                return path;
+            }
+        }
+        public string select_image_path_for_image_name(string image_name)
+        {
+
+            string path = "";
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name=@image_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@image_name", image_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    path += r.GetString(6); // return string of library_path
+                }
+                con.Close();
+                return path;
+
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't load image path from database.");
+                return path;
+            }
+        }
+        public string select_library_name_get_library_path(string library_name)
+        {
+            try
+            {
+                string path = "";
+                SqlCommand cmd = new SqlCommand("SELECT * FROM library WHERE library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    path+= r.GetString(4); // return library_path
+                }
+                con.Close();
+                return path;
+
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't load collections from database.");
+                return "";
+            }
         }
         public List<string> select_from_image_where_collection_name_is(string collection_name)
         {
             List<string> l = new List<string>();
+          
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE collection_name=@collection_name", con);
             con.Open();
@@ -87,53 +278,138 @@ namespace grindpipe_app
             SqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
-                l.Add(r.GetString(2) + " " + r.GetString(6)); // return list of library_name and library_path
+                l.Add(r.GetString(1) + " " + r.GetString(6)); // return list of library_name and library_path
             }
-
-            return l;
             con.Close();
+            return l;
+           
 
         }
         public void insert_to_library(string library_name, string library_path)
         {
-            DateTime library_date = DateTime.Now;
+            try
+            {
+                DateTime library_date = DateTime.Now;
+                SqlCommand insert = new SqlCommand("INSERT INTO [dbo].[library] ([library_name],[library_date], [library_path]) VALUES (@library_name,@library_date, @library_path)", con);
+                insert.Parameters.AddWithValue("@library_name", library_name);
+                insert.Parameters.AddWithValue("@library_date", library_date);
+                insert.Parameters.AddWithValue("@library_path", library_path);
+                con.Open();
+                insert.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Success!");
+            }catch(Exception err)
+            {
+                con.Close();
+            }
+        }
+        public void insert_to_collection(string library_name, string collection_name, string collection_path)
+        {
+            try
+            {
+                DateTime collection_date = DateTime.Now;
+                SqlCommand insert = new SqlCommand("INSERT INTO [dbo].[collection] ([library_name], [collection_name], [collection_date], [collection_path]) VALUES (@library_name,@collection_name,@collection_date, @collection_path)", con);
+                insert.Parameters.AddWithValue("@library_name", library_name);
+                insert.Parameters.AddWithValue("@collection_name", collection_name);
+                insert.Parameters.AddWithValue("@collection_date", collection_date);
+                insert.Parameters.AddWithValue("@collection_path", collection_path);
+                con.Open();
+                insert.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Success!");
+            }
+            catch (Exception err)
+            {
+                con.Close();
+            }
+        }
+        public void insert_to_image(string image_name, string collection_name, string image_path, string image_keyword)
+        {
+            try
+            {
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO library (library_name,library_date,library_path) VALUES(@library_name,@library_date,@library_path)", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@library_name", library_name);
-            cmd.Parameters.AddWithValue("@library_date", library_date);
-            cmd.Parameters.AddWithValue("@library_path", library_path);
-
-            cmd.ExecuteNonQuery();
-
+                SqlCommand insert = new SqlCommand("INSERT INTO [dbo].[image] ([image_name], [collection_name], [image_path], [image_keyword]) VALUES (@image_name,@collection_name, @image_path, @image_keyword)", con);
+                insert.Parameters.AddWithValue("@image_name", image_name);
+                insert.Parameters.AddWithValue("@collection_name", collection_name);
+                insert.Parameters.AddWithValue("@image_path", image_path);
+                insert.Parameters.AddWithValue("@image_keyword", image_keyword);
+                con.Open();
+                insert.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Success!");
+            }
+            catch (Exception err)
+            {
+                con.Close();
+            }
+        }
+        public List<string> select_images_by_keyword(string image_keyword)
+        {
+            List<string> l = new List<string>();
 
             con.Close();
-        }
-
-        public void insert_to_collection(string collection_name, string collection_path)
-        {
-            DateTime collection_date = DateTime.Now;
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO collection (collection_name,collection_date,collection_path) VALUES(@collection_name,@collection_date,@collection_path)", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_keyword=@image_keyword", con);
             con.Open();
-            cmd.Parameters.AddWithValue("@collection_name", collection_name);
-            cmd.Parameters.AddWithValue("@collection_date", collection_date);
-            cmd.Parameters.AddWithValue("@collection_path", collection_path);
-
-            cmd.ExecuteNonQuery();
-
-
+            cmd.Parameters.AddWithValue("@image_keyword", image_keyword);
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                l.Add(r.GetString(1) + "/" + r.GetString(2)); // return list of library_name and library_path
+            }
             con.Close();
+            return l;
         }
 
-        public void insert_to_image()
+        public void delete_all_by_image_name(string image_name)
         {
-
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM image WHERE image_name=@image_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@image_name", image_name);
+                   cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't delete image from database.");
+            }
         }
-
-
-
-
+        public void delete_all_by_collection_name(string collection_name)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM collection WHERE collection_name=@collection_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't delete collection from database.");
+            }
+        }
+        public void delete_all_by_library_name(string library_name)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM library WHERE library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't delete library from database.");
+            }
+        }
 
     }
+
+
 }

@@ -27,6 +27,19 @@ namespace grindpipe_app
 
         private void ViewAndAddImage_Load(object sender, EventArgs e)
         {
+           
+          //  this.libraryTableAdapter.Fill(this.grindpipe_dbDataSet.image);
+
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+         
 
         }
     }

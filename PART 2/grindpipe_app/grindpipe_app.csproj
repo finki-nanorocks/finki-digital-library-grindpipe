@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddName.Designer.cs">
+      <DependentUpon>AddName.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClassesDigitalLibrary.cs" />
     <Compile Include="grindpipe-dl.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,10 @@
       <DependentUpon>grindpipe-imagemagic-gui.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassesImageMagic.cs" />
+    <Compile Include="grindpipe_dbDataSet.cs">
+      <DependentUpon>grindpipe_dbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="grindpipe_dbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,6 +119,9 @@
     <Compile Include="ViewAndAddLibrary.Designer.cs">
       <DependentUpon>ViewAndAddLibrary.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddName.resx">
+      <DependentUpon>AddName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Grindpipe-dl.resx">
       <DependentUpon>grindpipe-dl.cs</DependentUpon>
     </EmbeddedResource>

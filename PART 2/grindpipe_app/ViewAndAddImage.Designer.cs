@@ -44,9 +44,7 @@
             this.imageTableAdapter = new grindpipe_app.grindpipe_dbDataSetTableAdapters.imageTableAdapter();
             this.tableAdapterManager = new grindpipe_app.grindpipe_dbDataSetTableAdapters.TableAdapterManager();
             this.imageBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -55,7 +53,8 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.imageBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.btn_update_image = new System.Windows.Forms.Button();
+            this.imageBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.image_nameTextBox = new System.Windows.Forms.TextBox();
             this.collection_nameTextBox = new System.Windows.Forms.TextBox();
             this.image_widthTextBox = new System.Windows.Forms.TextBox();
@@ -65,7 +64,13 @@
             this.image_allow_printTextBox = new System.Windows.Forms.TextBox();
             this.image_inventoryTextBox = new System.Windows.Forms.TextBox();
             this.image_keywordTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_close = new System.Windows.Forms.Button();
+            this.imageBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.imageBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.imageBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.imageListBox = new System.Windows.Forms.ListBox();
+            this.grindpipedbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             image_nameLabel = new System.Windows.Forms.Label();
             collection_nameLabel = new System.Windows.Forms.Label();
             image_widthLabel = new System.Windows.Forms.Label();
@@ -79,87 +84,93 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).BeginInit();
             this.imageBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grindpipedbDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // image_nameLabel
             // 
             image_nameLabel.AutoSize = true;
-            image_nameLabel.Location = new System.Drawing.Point(16, 46);
+            image_nameLabel.Location = new System.Drawing.Point(150, 39);
             image_nameLabel.Name = "image_nameLabel";
             image_nameLabel.Size = new System.Drawing.Size(67, 13);
-            image_nameLabel.TabIndex = 3;
+            image_nameLabel.TabIndex = 23;
             image_nameLabel.Text = "image name:";
             // 
             // collection_nameLabel
             // 
             collection_nameLabel.AutoSize = true;
-            collection_nameLabel.Location = new System.Drawing.Point(16, 72);
+            collection_nameLabel.Location = new System.Drawing.Point(150, 65);
             collection_nameLabel.Name = "collection_nameLabel";
             collection_nameLabel.Size = new System.Drawing.Size(84, 13);
-            collection_nameLabel.TabIndex = 5;
+            collection_nameLabel.TabIndex = 25;
             collection_nameLabel.Text = "collection name:";
             // 
             // image_widthLabel
             // 
             image_widthLabel.AutoSize = true;
-            image_widthLabel.Location = new System.Drawing.Point(16, 98);
+            image_widthLabel.Location = new System.Drawing.Point(150, 91);
             image_widthLabel.Name = "image_widthLabel";
             image_widthLabel.Size = new System.Drawing.Size(66, 13);
-            image_widthLabel.TabIndex = 7;
+            image_widthLabel.TabIndex = 27;
             image_widthLabel.Text = "image width:";
             // 
             // image_heightLabel
             // 
             image_heightLabel.AutoSize = true;
-            image_heightLabel.Location = new System.Drawing.Point(16, 124);
+            image_heightLabel.Location = new System.Drawing.Point(150, 117);
             image_heightLabel.Name = "image_heightLabel";
             image_heightLabel.Size = new System.Drawing.Size(70, 13);
-            image_heightLabel.TabIndex = 9;
+            image_heightLabel.TabIndex = 29;
             image_heightLabel.Text = "image height:";
             // 
             // image_extensionLabel
             // 
             image_extensionLabel.AutoSize = true;
-            image_extensionLabel.Location = new System.Drawing.Point(16, 150);
+            image_extensionLabel.Location = new System.Drawing.Point(150, 143);
             image_extensionLabel.Name = "image_extensionLabel";
             image_extensionLabel.Size = new System.Drawing.Size(86, 13);
-            image_extensionLabel.TabIndex = 11;
+            image_extensionLabel.TabIndex = 31;
             image_extensionLabel.Text = "image extension:";
             // 
             // image_pathLabel
             // 
             image_pathLabel.AutoSize = true;
-            image_pathLabel.Location = new System.Drawing.Point(16, 176);
+            image_pathLabel.Location = new System.Drawing.Point(150, 169);
             image_pathLabel.Name = "image_pathLabel";
             image_pathLabel.Size = new System.Drawing.Size(62, 13);
-            image_pathLabel.TabIndex = 13;
+            image_pathLabel.TabIndex = 33;
             image_pathLabel.Text = "image path:";
             // 
             // image_allow_printLabel
             // 
             image_allow_printLabel.AutoSize = true;
-            image_allow_printLabel.Location = new System.Drawing.Point(16, 202);
+            image_allow_printLabel.Location = new System.Drawing.Point(150, 195);
             image_allow_printLabel.Name = "image_allow_printLabel";
             image_allow_printLabel.Size = new System.Drawing.Size(88, 13);
-            image_allow_printLabel.TabIndex = 15;
+            image_allow_printLabel.TabIndex = 35;
             image_allow_printLabel.Text = "image allow print:";
             // 
             // image_inventoryLabel
             // 
             image_inventoryLabel.AutoSize = true;
-            image_inventoryLabel.Location = new System.Drawing.Point(16, 228);
+            image_inventoryLabel.Location = new System.Drawing.Point(150, 221);
             image_inventoryLabel.Name = "image_inventoryLabel";
             image_inventoryLabel.Size = new System.Drawing.Size(84, 13);
-            image_inventoryLabel.TabIndex = 17;
+            image_inventoryLabel.TabIndex = 37;
             image_inventoryLabel.Text = "image inventory:";
             // 
             // image_keywordLabel
             // 
             image_keywordLabel.AutoSize = true;
-            image_keywordLabel.Location = new System.Drawing.Point(16, 254);
+            image_keywordLabel.Location = new System.Drawing.Point(150, 247);
             image_keywordLabel.Name = "image_keywordLabel";
             image_keywordLabel.Size = new System.Drawing.Size(81, 13);
-            image_keywordLabel.TabIndex = 19;
+            image_keywordLabel.TabIndex = 39;
             image_keywordLabel.Text = "image keyword:";
             // 
             // grindpipe_dbDataSet
@@ -186,9 +197,9 @@
             // 
             // imageBindingNavigator
             // 
-            this.imageBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.imageBindingNavigator.AddNewItem = null;
             this.imageBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.imageBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.imageBindingNavigator.DeleteItem = null;
             this.imageBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -198,10 +209,7 @@
             this.bindingNavigatorSeparator1,
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.imageBindingNavigatorSaveItem});
+            this.bindingNavigatorSeparator2});
             this.imageBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.imageBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.imageBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -209,18 +217,9 @@
             this.imageBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.imageBindingNavigator.Name = "imageBindingNavigator";
             this.imageBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.imageBindingNavigator.Size = new System.Drawing.Size(305, 25);
+            this.imageBindingNavigator.Size = new System.Drawing.Size(418, 25);
             this.imageBindingNavigator.TabIndex = 0;
             this.imageBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
             // 
@@ -228,15 +227,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -298,102 +288,145 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // imageBindingNavigatorSaveItem
+            // btn_update_image
             // 
-            this.imageBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.imageBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("imageBindingNavigatorSaveItem.Image")));
-            this.imageBindingNavigatorSaveItem.Name = "imageBindingNavigatorSaveItem";
-            this.imageBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.imageBindingNavigatorSaveItem.Text = "Save Data";
-            this.imageBindingNavigatorSaveItem.Click += new System.EventHandler(this.imageBindingNavigatorSaveItem_Click);
+            this.btn_update_image.Location = new System.Drawing.Point(288, 276);
+            this.btn_update_image.Name = "btn_update_image";
+            this.btn_update_image.Size = new System.Drawing.Size(111, 23);
+            this.btn_update_image.TabIndex = 21;
+            this.btn_update_image.Text = "Update data";
+            this.btn_update_image.UseVisualStyleBackColor = true;
+            // 
+            // imageBindingSource1
+            // 
+            this.imageBindingSource1.DataMember = "image";
+            this.imageBindingSource1.DataSource = this.grindpipe_dbDataSet;
             // 
             // image_nameTextBox
             // 
             this.image_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_name", true));
-            this.image_nameTextBox.Location = new System.Drawing.Point(115, 39);
+            this.image_nameTextBox.Location = new System.Drawing.Point(240, 32);
             this.image_nameTextBox.Name = "image_nameTextBox";
-            this.image_nameTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_nameTextBox.TabIndex = 4;
+            this.image_nameTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_nameTextBox.TabIndex = 24;
             // 
             // collection_nameTextBox
             // 
             this.collection_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "collection_name", true));
-            this.collection_nameTextBox.Location = new System.Drawing.Point(115, 65);
+            this.collection_nameTextBox.Location = new System.Drawing.Point(240, 58);
             this.collection_nameTextBox.Name = "collection_nameTextBox";
-            this.collection_nameTextBox.Size = new System.Drawing.Size(163, 20);
-            this.collection_nameTextBox.TabIndex = 6;
+            this.collection_nameTextBox.Size = new System.Drawing.Size(159, 20);
+            this.collection_nameTextBox.TabIndex = 26;
             // 
             // image_widthTextBox
             // 
             this.image_widthTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_width", true));
-            this.image_widthTextBox.Location = new System.Drawing.Point(115, 91);
+            this.image_widthTextBox.Location = new System.Drawing.Point(240, 84);
             this.image_widthTextBox.Name = "image_widthTextBox";
-            this.image_widthTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_widthTextBox.TabIndex = 8;
+            this.image_widthTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_widthTextBox.TabIndex = 28;
             // 
             // image_heightTextBox
             // 
             this.image_heightTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_height", true));
-            this.image_heightTextBox.Location = new System.Drawing.Point(115, 117);
+            this.image_heightTextBox.Location = new System.Drawing.Point(240, 110);
             this.image_heightTextBox.Name = "image_heightTextBox";
-            this.image_heightTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_heightTextBox.TabIndex = 10;
+            this.image_heightTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_heightTextBox.TabIndex = 30;
             // 
             // image_extensionTextBox
             // 
             this.image_extensionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_extension", true));
-            this.image_extensionTextBox.Location = new System.Drawing.Point(115, 143);
+            this.image_extensionTextBox.Location = new System.Drawing.Point(240, 136);
             this.image_extensionTextBox.Name = "image_extensionTextBox";
-            this.image_extensionTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_extensionTextBox.TabIndex = 12;
+            this.image_extensionTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_extensionTextBox.TabIndex = 32;
             // 
             // image_pathTextBox
             // 
             this.image_pathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_path", true));
-            this.image_pathTextBox.Location = new System.Drawing.Point(115, 169);
+            this.image_pathTextBox.Location = new System.Drawing.Point(240, 162);
             this.image_pathTextBox.Name = "image_pathTextBox";
-            this.image_pathTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_pathTextBox.TabIndex = 14;
+            this.image_pathTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_pathTextBox.TabIndex = 34;
             // 
             // image_allow_printTextBox
             // 
             this.image_allow_printTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_allow_print", true));
-            this.image_allow_printTextBox.Location = new System.Drawing.Point(115, 195);
+            this.image_allow_printTextBox.Location = new System.Drawing.Point(240, 188);
             this.image_allow_printTextBox.Name = "image_allow_printTextBox";
-            this.image_allow_printTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_allow_printTextBox.TabIndex = 16;
+            this.image_allow_printTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_allow_printTextBox.TabIndex = 36;
             // 
             // image_inventoryTextBox
             // 
             this.image_inventoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_inventory", true));
-            this.image_inventoryTextBox.Location = new System.Drawing.Point(115, 221);
+            this.image_inventoryTextBox.Location = new System.Drawing.Point(240, 214);
             this.image_inventoryTextBox.Name = "image_inventoryTextBox";
-            this.image_inventoryTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_inventoryTextBox.TabIndex = 18;
+            this.image_inventoryTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_inventoryTextBox.TabIndex = 38;
             // 
             // image_keywordTextBox
             // 
             this.image_keywordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.imageBindingSource, "image_keyword", true));
-            this.image_keywordTextBox.Location = new System.Drawing.Point(115, 247);
+            this.image_keywordTextBox.Location = new System.Drawing.Point(240, 240);
             this.image_keywordTextBox.Name = "image_keywordTextBox";
-            this.image_keywordTextBox.Size = new System.Drawing.Size(163, 20);
-            this.image_keywordTextBox.TabIndex = 20;
+            this.image_keywordTextBox.Size = new System.Drawing.Size(159, 20);
+            this.image_keywordTextBox.TabIndex = 40;
             // 
-            // button1
+            // btn_close
             // 
-            this.button1.Location = new System.Drawing.Point(203, 282);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_close.Location = new System.Drawing.Point(153, 276);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(111, 23);
+            this.btn_close.TabIndex = 41;
+            this.btn_close.Text = "Close";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
+            // imageBindingSource2
+            // 
+            this.imageBindingSource2.DataMember = "image";
+            this.imageBindingSource2.DataSource = this.grindpipe_dbDataSet;
+            // 
+            // imageBindingSource3
+            // 
+            this.imageBindingSource3.DataMember = "image";
+            this.imageBindingSource3.DataSource = this.grindpipe_dbDataSet;
+            // 
+            // imageBindingSource4
+            // 
+            this.imageBindingSource4.DataMember = "image";
+            this.imageBindingSource4.DataSource = this.grindpipe_dbDataSet;
+            // 
+            // imageListBox
+            // 
+            this.imageListBox.DataSource = this.imageBindingSource5;
+            this.imageListBox.DisplayMember = "image_name";
+            this.imageListBox.FormattingEnabled = true;
+            this.imageListBox.Location = new System.Drawing.Point(12, 32);
+            this.imageListBox.Name = "imageListBox";
+            this.imageListBox.Size = new System.Drawing.Size(132, 277);
+            this.imageListBox.TabIndex = 41;
+            this.imageListBox.ValueMember = "collection_name";
+            // 
+            // grindpipedbDataSetBindingSource
+            // 
+            this.grindpipedbDataSetBindingSource.DataSource = this.grindpipe_dbDataSet;
+            this.grindpipedbDataSetBindingSource.Position = 0;
+            // 
+            // imageBindingSource5
+            // 
+            this.imageBindingSource5.DataMember = "image";
+            this.imageBindingSource5.DataSource = this.grindpipedbDataSetBindingSource;
             // 
             // ViewAndAddImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 341);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(418, 326);
+            this.Controls.Add(this.imageListBox);
+            this.Controls.Add(this.btn_close);
             this.Controls.Add(image_nameLabel);
             this.Controls.Add(this.image_nameTextBox);
             this.Controls.Add(collection_nameLabel);
@@ -412,6 +445,7 @@
             this.Controls.Add(this.image_inventoryTextBox);
             this.Controls.Add(image_keywordLabel);
             this.Controls.Add(this.image_keywordTextBox);
+            this.Controls.Add(this.btn_update_image);
             this.Controls.Add(this.imageBindingNavigator);
             this.Name = "ViewAndAddImage";
             this.Text = "View and Add Image";
@@ -421,6 +455,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingNavigator)).EndInit();
             this.imageBindingNavigator.ResumeLayout(false);
             this.imageBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grindpipedbDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,9 +473,7 @@
         private grindpipe_dbDataSetTableAdapters.imageTableAdapter imageTableAdapter;
         private grindpipe_dbDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator imageBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -444,7 +482,8 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton imageBindingNavigatorSaveItem;
+        private System.Windows.Forms.Button btn_update_image;
+        private System.Windows.Forms.BindingSource imageBindingSource1;
         private System.Windows.Forms.TextBox image_nameTextBox;
         private System.Windows.Forms.TextBox collection_nameTextBox;
         private System.Windows.Forms.TextBox image_widthTextBox;
@@ -454,7 +493,13 @@
         private System.Windows.Forms.TextBox image_allow_printTextBox;
         private System.Windows.Forms.TextBox image_inventoryTextBox;
         private System.Windows.Forms.TextBox image_keywordTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.BindingSource imageBindingSource2;
+        private System.Windows.Forms.BindingSource imageBindingSource3;
+        private System.Windows.Forms.BindingSource imageBindingSource4;
+        private System.Windows.Forms.ListBox imageListBox;
+        private System.Windows.Forms.BindingSource imageBindingSource5;
+        private System.Windows.Forms.BindingSource grindpipedbDataSetBindingSource;
 
     }
 }

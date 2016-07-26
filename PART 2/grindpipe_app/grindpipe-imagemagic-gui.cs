@@ -14,7 +14,7 @@ namespace grindpipe_app
     public partial class Editor : Form
     {
         ClassesImageMagic c = new ClassesImageMagic();
-        
+
         public Editor()
         {
             InitializeComponent();
@@ -25,22 +25,22 @@ namespace grindpipe_app
             this.Close();
         }
 
-  
+
         private void Editor_Load(object sender, EventArgs e)
         {
-           this.FormBorderStyle = FormBorderStyle.FixedDialog;
-           this.MaximizeBox = false;
-           this.MinimizeBox = false;
-           this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
 
 
-           txt_path.ReadOnly = true;
-           rb_none.Checked = true;
-           ddl_box.DropDownStyle = ComboBoxStyle.DropDownList;
-           txt_width.ReadOnly = true;
-           txt_height.ReadOnly = true; 
+            txt_path.ReadOnly = true;
+            rb_none.Checked = true;
+            ddl_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            txt_width.ReadOnly = true;
+            txt_height.ReadOnly = true;
 
-             
+
         }
 
         private void btn_help_Click(object sender, EventArgs e)
@@ -51,17 +51,17 @@ namespace grindpipe_app
 
         private void btn_view_image_Click(object sender, EventArgs e)
         {
-            c.btn_info_and_view(txt_path.Text, c.FINISH_PATH,2);
+            c.btn_info_and_view(txt_path.Text, c.FINISH_PATH, 2, false);
         }
 
         private void btn_info_Click(object sender, EventArgs e)
         {
-            c.btn_info_and_view(txt_path.Text, "pause",1);
+            c.btn_info_and_view(txt_path.Text, "pause", 1, false);
         }
 
         private void rb_bw_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btn_upload_Click(object sender, EventArgs e)
@@ -69,12 +69,17 @@ namespace grindpipe_app
             OpenFileDialog ofd = new OpenFileDialog();
             DialogResult dr = ofd.ShowDialog();
             string path = ofd.FileName.ToString(); // zema pateka od izbraj fajl
-
-            if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico"))
+            if (path.Contains("\\dl_") && path.Contains("\\col_"))
+            {
+                MessageBox.Show("You can only edit images who aren't in your digital library or collection.");
+                txt_path.Text = "";
+                return;
+            }
+            if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico") || path.Contains(".JPG") || path.Contains(".PNG") || path.Contains(".GIF") || path.Contains(".ICO"))
             {
                 txt_path.Text = ofd.FileName.ToString(); // ja pokazuva celosnata pateka od izbraj fajl
                 lbl_path1.Text = "";
-              //  label6.Text = Path.GetFileName(txt_path.Text); //ja zema slikata od pateka
+                //  label6.Text = Path.GetFileName(txt_path.Text); //ja zema slikata od pateka
             }
             else
             {
@@ -88,16 +93,22 @@ namespace grindpipe_app
         private void btn_convert_Click(object sender, EventArgs e)
         {
 
-            string format, rotation, black_white, width_height, treshold_img, smaller_effect;
-            format = rotation = black_white = width_height = treshold_img = smaller_effect = "";
+            string format, rotation, black_white, width_height, treshold_img, smaller_effect, water_effect;
+            format = rotation = black_white = width_height = treshold_img = smaller_effect = water_effect = "";
             string CODE = "";
 
             if (txt_path.Text != "")
             {
                 if (lb_format.SelectedIndex != -1)
                 {
-                    format = c.format_met(txt_path.Text);
-
+                    if (txt_path.Text.Contains(lb_format.Text))
+                    {
+                        format = c.format_met(txt_path.Text);
+                    }
+                    else
+                    {
+                        format = c.format_met(txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
+                    }
                     if (ddl_box.Text != "")
                     {
                         rotation = c.rotation(Int32.Parse(ddl_box.Text), txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
@@ -106,15 +117,23 @@ namespace grindpipe_app
                     {
                         black_white = c.black_white(txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
                     }
-                    if(cb_threshold.Checked)
+                    if (cb_threshold.Checked)
                     {
                         treshold_img = c.threshold_image(txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
                     }
-                    if(cb_smaller.Checked)
+                    if (cb_smaller.Checked)
                     {
-                        smaller_effect = c.smaller_image50(txt_path.Text,c.GetUniqueKey(8,lb_format.Text));
+                        smaller_effect = c.smaller_image50(txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
                     }
-                    if ( (txt_width.ReadOnly && txt_height.ReadOnly) || ( c.is_number(txt_width.Text) && c.is_number(txt_height.Text) ) )// TREBA DA SE SREDI
+                    if (cb_water_effect.Checked)
+                    {
+                        // System.Drawing.Image img = System.Drawing.Image.FromFile(txt_path.Text);
+                        water_effect = c.water_effect(txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
+                        //MessageBox.Show(c.water_effect(txt_path.Text, c.GetUniqueKey(8, lb_format.Text)));
+
+                        // here put the code about wather effect
+                    }
+                    if ((txt_width.ReadOnly && txt_height.ReadOnly) || (c.is_number(txt_width.Text) && c.is_number(txt_height.Text)))// TREBA DA SE SREDI
                     {
                         width_height = c.width_height(txt_width.Text, txt_height.Text, txt_path.Text, c.GetUniqueKey(8, lb_format.Text));
                     }
@@ -122,31 +141,32 @@ namespace grindpipe_app
                     {
                         MessageBox.Show("It must consist only numerical values in text fields width and height");
                         txt_width.Text = txt_height.Text = "";
+                        return;
                     }
 
                 }
                 else
                 {
                     MessageBox.Show("First select a new format before editing an image. Then, choose any type of editing image like width/height, rotation, black and white image or, special imaging.");
-                    format = rotation = black_white = width_height = treshold_img = smaller_effect = "";
+                    format = rotation = black_white = width_height = treshold_img = smaller_effect = water_effect = "";
                     return;
                 }
-                CODE = format + rotation + black_white + width_height + treshold_img + smaller_effect;
-              
+                CODE = format + water_effect + rotation + black_white + width_height + treshold_img + smaller_effect;
+
                 string pom_path = Path.GetFileName(txt_path.Text); // get image from path for txt_path.Text
                 int ind_pom_path = txt_path.Text.IndexOf(pom_path);
                 string new_s = txt_path.Text.Remove(ind_pom_path);
-             //   label6.Text = new_s;
+                //   label6.Text = new_s;
 
-                c.MAKE_BAT_AND_START(c.START_PATH_BAT, new_s, CODE+c.FINISH_PATH);
+                c.MAKE_BAT_AND_START(c.START_PATH_BAT, new_s, CODE + c.FINISH_PATH);
                 MessageBox.Show("Success!");
-            }else
+            }
+            else
             {
                 MessageBox.Show("You must first upload an image");
                 format = rotation = black_white = width_height = treshold_img = smaller_effect = "";
-              //  label6.Text = "";
             }
-           
+
         }
 
         private void btn_clear_format_Click(object sender, EventArgs e)
@@ -158,7 +178,7 @@ namespace grindpipe_app
         {
             txt_width.ReadOnly = false;
             txt_height.ReadOnly = false;
-          
+
         }
 
         private void btn_disable_Click(object sender, EventArgs e)
@@ -173,7 +193,39 @@ namespace grindpipe_app
 
         }
 
-     
-      
+        private void btn_view_windows_Click(object sender, EventArgs e)
+        {
+            c.btn_info_and_view(txt_path.Text, c.FINISH_PATH, 2, true);
+        }
+
+        private void cb_smaller_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_water_effect_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txt_path.Text == "")
+            {
+                MessageBox.Show("You must first upload an image");
+                return;
+            }
+            if (!cb_water_effect.Checked)
+            {
+                return;
+            }
+            System.Drawing.Image imgWH = System.Drawing.Image.FromFile(txt_path.Text);
+            int width = Int32.Parse(imgWH.Width.ToString());
+            int height = Int32.Parse(imgWH.Height.ToString());
+            if (width > 301 || height > 301)
+            {
+                MessageBox.Show("Width and height must be under 300 px.");
+                cb_water_effect.Checked = false;
+                return;
+            }
+        }
+
+
+
     }
 }

@@ -27,9 +27,14 @@ namespace grindpipe_app
 
         private void ViewAndAddLibrary_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'grindpipe_dbDataSet.library' table. You can move, or remove it, as needed.
+            //this.grindpipe_dbDataSet.Reset();
             this.libraryTableAdapter.Fill(this.grindpipe_dbDataSet.library);
+           
+        }
 
+        private void btn_close_library_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
