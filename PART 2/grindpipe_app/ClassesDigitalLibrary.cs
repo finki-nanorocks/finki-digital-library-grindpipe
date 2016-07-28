@@ -509,12 +509,13 @@ namespace grindpipe_app
 
 
         }
-        public void update_collection(string collection_name, string collection_date, string collection_num_images)
+        public void update_collection(string library_name,string collection_name, string collection_date, string collection_num_images)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("UPDATE collection SET collection_date=@collection_date, collection_num_images=@collection_num_images WHERE collection_name=@collection_name", con);
+                SqlCommand cmd = new SqlCommand("UPDATE collection SET collection_date=@collection_date, collection_num_images=@collection_num_images WHERE collection_name=@collection_name AND library_name=@library_name", con);
                 con.Open();
+                cmd.Parameters.AddWithValue("@library_name", library_name);
                 cmd.Parameters.AddWithValue("@collection_name", collection_name);
                 cmd.Parameters.AddWithValue("@collection_date", collection_date);
                 cmd.Parameters.AddWithValue("@collection_num_images", collection_num_images);

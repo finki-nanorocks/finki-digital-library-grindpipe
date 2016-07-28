@@ -54,10 +54,12 @@ namespace grindpipe_app
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            string collection_name = cb_list_coll.SelectedItem.ToString();
+            string []part = cb_list_coll.SelectedItem.ToString().Split('/');
+            string collection_name = part[0];
+            string library_name = part[1];
             string collection_date = txt_data_time.Text;
             string collection_num_images = txt_num_col_img.Value.ToString();
-            dl.update_collection(collection_name, collection_date, collection_num_images);
+            dl.update_collection(library_name, collection_name, collection_date, collection_num_images);
            // this.Close();
         
         }

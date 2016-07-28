@@ -202,6 +202,14 @@ namespace grindpipe_app
                     MessageBox.Show("Failed, to create.");
                     return;
                 }
+                for (int i = 0; i < lb_collection.Items.Count; i++ )
+                {
+                    if(lb_collection.Items[i].ToString().Contains(collection_name))
+                    {
+                        MessageBox.Show("You can't create collection with same name.");
+                        return;
+                    }
+                }
                 string library_name = lb_library.SelectedItem.ToString();
                 string library_path = dl.select_library_name_get_library_path(library_name);
               //  MessageBox.Show(library_path);
@@ -261,18 +269,27 @@ namespace grindpipe_app
 
         private void btn_view_add_dl_Click(object sender, EventArgs e)
         {
+            if (lb_library.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must first select Digital Library.");
+                return;
+            }
 
                Global_lib.GlobalVar_lib = lb_library.SelectedItem.ToString();
                 // should supplement
                 ViewAndAddLibrary v = new ViewAndAddLibrary();
                
                 v.Show();
-
           
         }
 
         private void btn_view_add_col_Click(object sender, EventArgs e)
         {
+            if (lb_collection.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must first select Collection.");
+                return;
+            }
             Global_coll.GlobalVar_coll = lb_collection.SelectedItem.ToString() + "/" + lb_library.SelectedItem.ToString();
                 ViewAndAddCollection v = new ViewAndAddCollection();
                 v.Show();
