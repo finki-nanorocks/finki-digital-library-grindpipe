@@ -81,6 +81,7 @@
             this.lb_image_keyword = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_keyword = new System.Windows.Forms.ComboBox();
+            this.disclaimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,10 +186,10 @@
             this.btn_view_add_dl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_view_add_dl.Location = new System.Drawing.Point(17, 437);
             this.btn_view_add_dl.Name = "btn_view_add_dl";
-            this.btn_view_add_dl.Size = new System.Drawing.Size(144, 31);
+            this.btn_view_add_dl.Size = new System.Drawing.Size(144, 42);
             this.btn_view_add_dl.TabIndex = 10;
-            this.btn_view_add_dl.Text = "Add and View metadata";
-            this.md_dl.SetToolTip(this.btn_view_add_dl, "Add metadata to the selected digital library\r\n\r\n\r\n");
+            this.btn_view_add_dl.Text = "View and Update all metadata";
+            this.md_dl.SetToolTip(this.btn_view_add_dl, "View and Update metadata for all Digital library");
             this.btn_view_add_dl.UseVisualStyleBackColor = true;
             this.btn_view_add_dl.Click += new System.EventHandler(this.btn_view_add_dl_Click);
             // 
@@ -197,10 +198,10 @@
             this.btn_view_add_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_view_add_col.Location = new System.Drawing.Point(184, 437);
             this.btn_view_add_col.Name = "btn_view_add_col";
-            this.btn_view_add_col.Size = new System.Drawing.Size(144, 31);
+            this.btn_view_add_col.Size = new System.Drawing.Size(144, 42);
             this.btn_view_add_col.TabIndex = 11;
-            this.btn_view_add_col.Text = "Add and View metadata";
-            this.toolTip2.SetToolTip(this.btn_view_add_col, "Add metadata to the selected collection");
+            this.btn_view_add_col.Text = "View and Update all metadata";
+            this.toolTip2.SetToolTip(this.btn_view_add_col, "View and Update metadata for all Collections");
             this.btn_view_add_col.UseVisualStyleBackColor = true;
             this.btn_view_add_col.Click += new System.EventHandler(this.btn_view_add_col_Click);
             // 
@@ -209,9 +210,9 @@
             this.btn_view_add_img.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_view_add_img.Location = new System.Drawing.Point(357, 437);
             this.btn_view_add_img.Name = "btn_view_add_img";
-            this.btn_view_add_img.Size = new System.Drawing.Size(144, 31);
+            this.btn_view_add_img.Size = new System.Drawing.Size(144, 42);
             this.btn_view_add_img.TabIndex = 12;
-            this.btn_view_add_img.Text = "Add and View metadata";
+            this.btn_view_add_img.Text = "View and Update metadata for image";
             this.toolTip3.SetToolTip(this.btn_view_add_img, "Add metadata to the selected image");
             this.btn_view_add_img.UseVisualStyleBackColor = true;
             this.btn_view_add_img.Click += new System.EventHandler(this.btn_view_add_img_Click);
@@ -224,6 +225,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createDigitalLibraryToolStripMenuItem1,
+            this.disclaimersToolStripMenuItem,
             this.aboutUsToolStripMenuItem1,
             this.documentationToolStripMenuItem1,
             this.communityToolStripMenuItem1,
@@ -287,6 +289,7 @@
             this.btn_del_sel_db.Text = "Delete selected digital library";
             this.toolTip14.SetToolTip(this.btn_del_sel_db, "Delete currently selected digital library");
             this.btn_del_sel_db.UseVisualStyleBackColor = true;
+            this.btn_del_sel_db.Click += new System.EventHandler(this.btn_del_sel_db_Click);
             // 
             // btn_del_sel_coll
             // 
@@ -298,6 +301,7 @@
             this.btn_del_sel_coll.Text = "Delete selected collection";
             this.toolTip13.SetToolTip(this.btn_del_sel_coll, "Delete currently selected collection");
             this.btn_del_sel_coll.UseVisualStyleBackColor = true;
+            this.btn_del_sel_coll.Click += new System.EventHandler(this.btn_del_sel_coll_Click);
             // 
             // btn_del_sel_img
             // 
@@ -447,6 +451,8 @@
             // 
             // cb_keyword
             // 
+            this.cb_keyword.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_keyword.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_keyword.FormattingEnabled = true;
             this.cb_keyword.Items.AddRange(new object[] {
             "sport",
@@ -475,11 +481,18 @@
             this.cb_keyword.Size = new System.Drawing.Size(352, 21);
             this.cb_keyword.TabIndex = 30;
             // 
+            // disclaimersToolStripMenuItem
+            // 
+            this.disclaimersToolStripMenuItem.Name = "disclaimersToolStripMenuItem";
+            this.disclaimersToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.disclaimersToolStripMenuItem.Text = "Disclaimers";
+            this.disclaimersToolStripMenuItem.Click += new System.EventHandler(this.disclaimersToolStripMenuItem_Click);
+            // 
             // Grindpipe_dl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 480);
+            this.ClientSize = new System.Drawing.Size(890, 490);
             this.Controls.Add(this.cb_keyword);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -575,5 +588,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cb_keyword;
+        private System.Windows.Forms.ToolStripMenuItem disclaimersToolStripMenuItem;
     }
 }

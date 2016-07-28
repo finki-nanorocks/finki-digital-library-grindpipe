@@ -25,6 +25,11 @@ namespace grindpipe_app
 
         private void Grindpipe_dl_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
            digital_library =  dl.select_all_from_library();
            for (int i = 0; i < digital_library.Count; i++ )
            {
@@ -148,9 +153,20 @@ namespace grindpipe_app
             {
                 string[] item_part = item.Split(' ');
                 string library_name = item_part[0];
+                for (int i = 0; i < lb_library.Items.Count; i++ )
+                {
+                    if (lb_library.Items[i].ToString().Contains(library_name))
+                    {
+                        MessageBox.Show("You can't create digital library with same name.");
+                        return;
+                    }
+                }
+
                 string library_path = item_part[1];
+                dl.insert_to_library(library_name, library_path);
                 dl.create_digital_library(library_path, library_name);
                 lb_library.Items.Add(item_part[0]);
+                //proveri dali vo digitali library lista da se dodade itemov od ime,date, pateka
             }
             
         }
@@ -180,8 +196,8 @@ namespace grindpipe_app
             }
             else
             {
-                string collection_name = dl.ShowDialog("Collection name", "Enter the name of the Collection", "col_");
-                if (collection_name == "" || collection_name == "")
+                string collection_name = dl.ShowDialog("Collection name", "Enter the name of the Collection", "col_").Replace(" ", string.Empty);
+                if (collection_name == "" || collection_name == null)
                 {
                     MessageBox.Show("Failed, to create.");
                     return;
@@ -245,34 +261,21 @@ namespace grindpipe_app
 
         private void btn_view_add_dl_Click(object sender, EventArgs e)
         {
-            if (lb_library.SelectedIndex == -1)
-            {
-                MessageBox.Show("You must first select digital library.");
-            }
-            else
-            {
+
+               Global_lib.GlobalVar_lib = lb_library.SelectedItem.ToString();
                 // should supplement
                 ViewAndAddLibrary v = new ViewAndAddLibrary();
                
                 v.Show();
 
-            }
+          
         }
 
         private void btn_view_add_col_Click(object sender, EventArgs e)
         {
-            if (lb_collection.SelectedIndex == -1)
-            {
-                MessageBox.Show("You must first select collection.");
-            }
-            else
-            {
-                // should supplement
+            Global_coll.GlobalVar_coll = lb_collection.SelectedItem.ToString() + "/" + lb_library.SelectedItem.ToString();
                 ViewAndAddCollection v = new ViewAndAddCollection();
-                
                 v.Show();
-
-            }
         }
 
         private void btn_view_add_img_Click(object sender, EventArgs e)
@@ -283,6 +286,7 @@ namespace grindpipe_app
             }
             else
             {
+                Global_img.GlobalVar_img = lb_images.SelectedItem.ToString();
                 // should supplement
                 ViewAndAddImage v = new ViewAndAddImage();
                 v.Show();
@@ -357,7 +361,7 @@ namespace grindpipe_app
                 DialogResult dr = ofd.ShowDialog();
                 string path = ofd.FileName.ToString(); // take path (zema pateka od izbraj fajl)
 
-                if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico"))
+                if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico") || path.Contains(".JPG") || path.Contains(".PNG") || path.Contains(".GIF") || path.Contains(".ICO"))
                 {
                    string image_path = ofd.FileName.ToString(); // ja pokazuva celosnata pateka od izbraj fajl
                 
@@ -403,6 +407,72 @@ namespace grindpipe_app
                 string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString());
                 c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
             }
+        }
+
+        private void btn_del_sel_db_Click(object sender, EventArgs e)
+        {
+            if (lb_library.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must first select Digital Library");
+            }
+            else
+            {
+
+                DialogResult dialogResult = MessageBox.Show("Аre you sure you want to delete Digital Library \nwith name: " + lb_library.SelectedItem.ToString(), "Digital Library delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    string lb_path = dl.select_library_name_get_library_path(lb_library.SelectedItem.ToString());
+                    dl.delete_row_by_library_name_in_library(lb_library.SelectedItem.ToString());
+                    dl.delete_row_by_library_name_in_collection(lb_library.SelectedItem.ToString());
+                    // add metod for delete images in db
+
+
+                    dl.del_dl_or_del_col(lb_path, lb_library.SelectedItem.ToString());
+                    for (int i = 0; i < lb_library.SelectedItems.Count; i++)
+                        lb_library.Items.Remove(lb_library.SelectedItems[i]);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+              
+
+            }
+        }
+
+        private void btn_del_sel_coll_Click(object sender, EventArgs e)
+        {
+            if (lb_collection.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must first select Collection");
+            }
+            else
+            {
+
+                DialogResult dialogResult = MessageBox.Show("Аre you sure you want to delete Collection \nwith name: " + lb_collection.SelectedItem.ToString(), "Collection delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString());
+                    DirectoryInfo parentDir = Directory.GetParent(collection_path);
+                    MessageBox.Show(parentDir.ToString());
+                    dl.delete_row_by_collection_name_in_collection(lb_collection.SelectedItem.ToString());
+                    dl.del_dl_or_del_col(parentDir.ToString(), lb_collection.SelectedItem.ToString());
+
+                    for (int i = 0; i < lb_collection.SelectedItems.Count; i++)
+                        lb_collection.Items.Remove(lb_collection.SelectedItems[i]);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+
+
+            }
+        }
+
+        private void disclaimersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Any manual changes that are made to the files of the software will not be updated.");
         }
 
         

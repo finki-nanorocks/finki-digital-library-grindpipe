@@ -27,8 +27,12 @@ namespace grindpipe_app
 
         private void ViewAndAddImage_Load(object sender, EventArgs e)
         {
-           
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
           //  this.libraryTableAdapter.Fill(this.grindpipe_dbDataSet.image);
+            MessageBox.Show(Global_img.GlobalVar_img.ToString());
 
         }
 

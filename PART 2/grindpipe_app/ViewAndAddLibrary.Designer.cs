@@ -29,103 +29,103 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label library_idLabel;
             System.Windows.Forms.Label library_nameLabel;
             System.Windows.Forms.Label library_dateLabel;
             System.Windows.Forms.Label library_num_collectionsLabel;
             System.Windows.Forms.Label library_pathLabel;
             System.Windows.Forms.Label library_inventoryLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAndAddLibrary));
+            this.btn_update_library = new System.Windows.Forms.Button();
+            this.libraryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_close_library = new System.Windows.Forms.Button();
             this.grindpipe_dbDataSet = new grindpipe_app.grindpipe_dbDataSet();
             this.libraryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.libraryTableAdapter = new grindpipe_app.grindpipe_dbDataSetTableAdapters.libraryTableAdapter();
             this.tableAdapterManager = new grindpipe_app.grindpipe_dbDataSetTableAdapters.TableAdapterManager();
-            this.libraryBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_update_library = new System.Windows.Forms.Button();
-            this.libraryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.libraryListBox = new System.Windows.Forms.ListBox();
-            this.library_idTextBox = new System.Windows.Forms.TextBox();
-            this.library_nameTextBox = new System.Windows.Forms.TextBox();
-            this.library_dateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.library_num_collectionsTextBox = new System.Windows.Forms.TextBox();
-            this.library_pathTextBox = new System.Windows.Forms.TextBox();
-            this.library_inventoryTextBox = new System.Windows.Forms.TextBox();
-            this.btn_close_library = new System.Windows.Forms.Button();
-            library_idLabel = new System.Windows.Forms.Label();
+            this.txt_library_name_metadata = new System.Windows.Forms.TextBox();
+            this.dt_library_date = new System.Windows.Forms.DateTimePicker();
+            this.txt_library_path_metadata = new System.Windows.Forms.TextBox();
+            this.libraryBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.lb_lib_name = new System.Windows.Forms.ComboBox();
+            this.txt_inventory = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.lbl_char = new System.Windows.Forms.Label();
             library_nameLabel = new System.Windows.Forms.Label();
             library_dateLabel = new System.Windows.Forms.Label();
             library_num_collectionsLabel = new System.Windows.Forms.Label();
             library_pathLabel = new System.Windows.Forms.Label();
             library_inventoryLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grindpipe_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingNavigator)).BeginInit();
-            this.libraryBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // library_idLabel
-            // 
-            library_idLabel.AutoSize = true;
-            library_idLabel.Location = new System.Drawing.Point(146, 35);
-            library_idLabel.Name = "library_idLabel";
-            library_idLabel.Size = new System.Drawing.Size(48, 13);
-            library_idLabel.TabIndex = 13;
-            library_idLabel.Text = "library id:";
             // 
             // library_nameLabel
             // 
             library_nameLabel.AutoSize = true;
-            library_nameLabel.Location = new System.Drawing.Point(146, 61);
+            library_nameLabel.Location = new System.Drawing.Point(16, 60);
             library_nameLabel.Name = "library_nameLabel";
-            library_nameLabel.Size = new System.Drawing.Size(66, 13);
-            library_nameLabel.TabIndex = 15;
-            library_nameLabel.Text = "library name:";
+            library_nameLabel.Size = new System.Drawing.Size(70, 13);
+            library_nameLabel.TabIndex = 27;
+            library_nameLabel.Text = "Library name:";
             // 
             // library_dateLabel
             // 
             library_dateLabel.AutoSize = true;
-            library_dateLabel.Location = new System.Drawing.Point(146, 88);
+            library_dateLabel.Location = new System.Drawing.Point(16, 87);
             library_dateLabel.Name = "library_dateLabel";
-            library_dateLabel.Size = new System.Drawing.Size(61, 13);
-            library_dateLabel.TabIndex = 17;
-            library_dateLabel.Text = "library date:";
+            library_dateLabel.Size = new System.Drawing.Size(65, 13);
+            library_dateLabel.TabIndex = 29;
+            library_dateLabel.Text = "Library date:";
             // 
             // library_num_collectionsLabel
             // 
             library_num_collectionsLabel.AutoSize = true;
-            library_num_collectionsLabel.Location = new System.Drawing.Point(146, 113);
+            library_num_collectionsLabel.Location = new System.Drawing.Point(16, 112);
             library_num_collectionsLabel.Name = "library_num_collectionsLabel";
-            library_num_collectionsLabel.Size = new System.Drawing.Size(113, 13);
-            library_num_collectionsLabel.TabIndex = 19;
-            library_num_collectionsLabel.Text = "library num collections:";
+            library_num_collectionsLabel.Size = new System.Drawing.Size(100, 13);
+            library_num_collectionsLabel.TabIndex = 31;
+            library_num_collectionsLabel.Text = "Number collections:";
             // 
             // library_pathLabel
             // 
             library_pathLabel.AutoSize = true;
-            library_pathLabel.Location = new System.Drawing.Point(146, 139);
+            library_pathLabel.Location = new System.Drawing.Point(16, 138);
             library_pathLabel.Name = "library_pathLabel";
-            library_pathLabel.Size = new System.Drawing.Size(61, 13);
-            library_pathLabel.TabIndex = 21;
-            library_pathLabel.Text = "library path:";
+            library_pathLabel.Size = new System.Drawing.Size(65, 13);
+            library_pathLabel.TabIndex = 33;
+            library_pathLabel.Text = "Library path:";
             // 
             // library_inventoryLabel
             // 
             library_inventoryLabel.AutoSize = true;
-            library_inventoryLabel.Location = new System.Drawing.Point(146, 165);
+            library_inventoryLabel.Location = new System.Drawing.Point(16, 164);
             library_inventoryLabel.Name = "library_inventoryLabel";
-            library_inventoryLabel.Size = new System.Drawing.Size(83, 13);
-            library_inventoryLabel.TabIndex = 23;
-            library_inventoryLabel.Text = "library inventory:";
+            library_inventoryLabel.Size = new System.Drawing.Size(95, 13);
+            library_inventoryLabel.TabIndex = 35;
+            library_inventoryLabel.Text = "Library description:";
+            // 
+            // btn_update_library
+            // 
+            this.btn_update_library.Location = new System.Drawing.Point(205, 240);
+            this.btn_update_library.Name = "btn_update_library";
+            this.btn_update_library.Size = new System.Drawing.Size(130, 23);
+            this.btn_update_library.TabIndex = 13;
+            this.btn_update_library.Text = "Update Data";
+            this.btn_update_library.UseVisualStyleBackColor = true;
+            this.btn_update_library.Click += new System.EventHandler(this.btn_update_library_Click);
+            // 
+            // btn_close_library
+            // 
+            this.btn_close_library.Location = new System.Drawing.Point(12, 240);
+            this.btn_close_library.Name = "btn_close_library";
+            this.btn_close_library.Size = new System.Drawing.Size(130, 23);
+            this.btn_close_library.TabIndex = 25;
+            this.btn_close_library.Text = "Close";
+            this.btn_close_library.UseVisualStyleBackColor = true;
+            this.btn_close_library.Click += new System.EventHandler(this.btn_close_library_Click);
             // 
             // grindpipe_dbDataSet
             // 
@@ -149,213 +149,105 @@
             this.tableAdapterManager.libraryTableAdapter = this.libraryTableAdapter;
             this.tableAdapterManager.UpdateOrder = grindpipe_app.grindpipe_dbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // libraryBindingNavigator
+            // txt_library_name_metadata
             // 
-            this.libraryBindingNavigator.AddNewItem = null;
-            this.libraryBindingNavigator.BindingSource = this.libraryBindingSource;
-            this.libraryBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.libraryBindingNavigator.DeleteItem = null;
-            this.libraryBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2});
-            this.libraryBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.libraryBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.libraryBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.libraryBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.libraryBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.libraryBindingNavigator.Name = "libraryBindingNavigator";
-            this.libraryBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.libraryBindingNavigator.Size = new System.Drawing.Size(480, 25);
-            this.libraryBindingNavigator.TabIndex = 0;
-            this.libraryBindingNavigator.Text = "bindingNavigator1";
+            this.txt_library_name_metadata.Location = new System.Drawing.Point(116, 57);
+            this.txt_library_name_metadata.Name = "txt_library_name_metadata";
+            this.txt_library_name_metadata.Size = new System.Drawing.Size(219, 20);
+            this.txt_library_name_metadata.TabIndex = 28;
             // 
-            // bindingNavigatorCountItem
+            // dt_library_date
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            this.dt_library_date.Location = new System.Drawing.Point(116, 83);
+            this.dt_library_date.Name = "dt_library_date";
+            this.dt_library_date.Size = new System.Drawing.Size(219, 20);
+            this.dt_library_date.TabIndex = 30;
             // 
-            // bindingNavigatorMoveFirstItem
+            // txt_library_path_metadata
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            this.txt_library_path_metadata.Location = new System.Drawing.Point(116, 135);
+            this.txt_library_path_metadata.Name = "txt_library_path_metadata";
+            this.txt_library_path_metadata.Size = new System.Drawing.Size(219, 20);
+            this.txt_library_path_metadata.TabIndex = 34;
             // 
-            // bindingNavigatorMovePreviousItem
+            // libraryBindingSource2
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            this.libraryBindingSource2.DataMember = "library";
+            this.libraryBindingSource2.DataSource = this.grindpipe_dbDataSet;
             // 
-            // bindingNavigatorSeparator
+            // lb_lib_name
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.lb_lib_name.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.lb_lib_name.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lb_lib_name.CausesValidation = false;
+            this.lb_lib_name.FormattingEnabled = true;
+            this.lb_lib_name.Location = new System.Drawing.Point(12, 30);
+            this.lb_lib_name.Name = "lb_lib_name";
+            this.lb_lib_name.Size = new System.Drawing.Size(323, 21);
+            this.lb_lib_name.TabIndex = 36;
+            this.lb_lib_name.SelectedIndexChanged += new System.EventHandler(this.lb_lib_name_SelectedIndexChanged);
             // 
-            // bindingNavigatorPositionItem
+            // txt_inventory
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            this.txt_inventory.Location = new System.Drawing.Point(116, 164);
+            this.txt_inventory.Name = "txt_inventory";
+            this.txt_inventory.Size = new System.Drawing.Size(219, 51);
+            this.txt_inventory.TabIndex = 39;
+            this.txt_inventory.Text = "";
+            this.txt_inventory.TextChanged += new System.EventHandler(this.txt_inventory_TextChanged);
             // 
-            // bindingNavigatorSeparator1
+            // label1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Digital Library:";
             // 
-            // bindingNavigatorMoveNextItem
+            // numericUpDown1
             // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            this.numericUpDown1.Location = new System.Drawing.Point(116, 109);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(219, 20);
+            this.numericUpDown1.TabIndex = 41;
             // 
-            // bindingNavigatorMoveLastItem
+            // lbl_char
             // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btn_update_library
-            // 
-            this.btn_update_library.Location = new System.Drawing.Point(338, 196);
-            this.btn_update_library.Name = "btn_update_library";
-            this.btn_update_library.Size = new System.Drawing.Size(130, 23);
-            this.btn_update_library.TabIndex = 13;
-            this.btn_update_library.Text = "Update Data";
-            this.btn_update_library.UseVisualStyleBackColor = true;
-            // 
-            // libraryBindingSource1
-            // 
-            this.libraryBindingSource1.DataMember = "library";
-            this.libraryBindingSource1.DataSource = this.grindpipe_dbDataSet;
-            // 
-            // libraryListBox
-            // 
-            this.libraryListBox.DataSource = this.libraryBindingSource1;
-            this.libraryListBox.DisplayMember = "library_name";
-            this.libraryListBox.FormattingEnabled = true;
-            this.libraryListBox.Location = new System.Drawing.Point(12, 33);
-            this.libraryListBox.Name = "libraryListBox";
-            this.libraryListBox.Size = new System.Drawing.Size(128, 186);
-            this.libraryListBox.TabIndex = 13;
-            this.libraryListBox.ValueMember = "library_id";
-            // 
-            // library_idTextBox
-            // 
-            this.library_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libraryBindingSource, "library_id", true));
-            this.library_idTextBox.Location = new System.Drawing.Point(269, 35);
-            this.library_idTextBox.Name = "library_idTextBox";
-            this.library_idTextBox.Size = new System.Drawing.Size(200, 20);
-            this.library_idTextBox.TabIndex = 14;
-            // 
-            // library_nameTextBox
-            // 
-            this.library_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libraryBindingSource, "library_name", true));
-            this.library_nameTextBox.Location = new System.Drawing.Point(269, 61);
-            this.library_nameTextBox.Name = "library_nameTextBox";
-            this.library_nameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.library_nameTextBox.TabIndex = 16;
-            // 
-            // library_dateDateTimePicker
-            // 
-            this.library_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.libraryBindingSource, "library_date", true));
-            this.library_dateDateTimePicker.Location = new System.Drawing.Point(269, 87);
-            this.library_dateDateTimePicker.Name = "library_dateDateTimePicker";
-            this.library_dateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.library_dateDateTimePicker.TabIndex = 18;
-            // 
-            // library_num_collectionsTextBox
-            // 
-            this.library_num_collectionsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libraryBindingSource, "library_num_collections", true));
-            this.library_num_collectionsTextBox.Location = new System.Drawing.Point(269, 113);
-            this.library_num_collectionsTextBox.Name = "library_num_collectionsTextBox";
-            this.library_num_collectionsTextBox.Size = new System.Drawing.Size(200, 20);
-            this.library_num_collectionsTextBox.TabIndex = 20;
-            // 
-            // library_pathTextBox
-            // 
-            this.library_pathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libraryBindingSource, "library_path", true));
-            this.library_pathTextBox.Location = new System.Drawing.Point(269, 139);
-            this.library_pathTextBox.Name = "library_pathTextBox";
-            this.library_pathTextBox.Size = new System.Drawing.Size(200, 20);
-            this.library_pathTextBox.TabIndex = 22;
-            // 
-            // library_inventoryTextBox
-            // 
-            this.library_inventoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.libraryBindingSource, "library_inventory", true));
-            this.library_inventoryTextBox.Location = new System.Drawing.Point(269, 165);
-            this.library_inventoryTextBox.Name = "library_inventoryTextBox";
-            this.library_inventoryTextBox.Size = new System.Drawing.Size(200, 20);
-            this.library_inventoryTextBox.TabIndex = 24;
-            // 
-            // btn_close_library
-            // 
-            this.btn_close_library.Location = new System.Drawing.Point(149, 196);
-            this.btn_close_library.Name = "btn_close_library";
-            this.btn_close_library.Size = new System.Drawing.Size(130, 23);
-            this.btn_close_library.TabIndex = 25;
-            this.btn_close_library.Text = "Close";
-            this.btn_close_library.UseVisualStyleBackColor = true;
-            this.btn_close_library.Click += new System.EventHandler(this.btn_close_library_Click);
+            this.lbl_char.AutoSize = true;
+            this.lbl_char.Location = new System.Drawing.Point(113, 218);
+            this.lbl_char.Name = "lbl_char";
+            this.lbl_char.Size = new System.Drawing.Size(0, 13);
+            this.lbl_char.TabIndex = 42;
             // 
             // ViewAndAddLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 233);
-            this.Controls.Add(this.btn_close_library);
-            this.Controls.Add(library_idLabel);
-            this.Controls.Add(this.library_idTextBox);
+            this.ClientSize = new System.Drawing.Size(349, 275);
+            this.Controls.Add(this.lbl_char);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_inventory);
+            this.Controls.Add(this.lb_lib_name);
             this.Controls.Add(library_nameLabel);
-            this.Controls.Add(this.library_nameTextBox);
+            this.Controls.Add(this.txt_library_name_metadata);
             this.Controls.Add(library_dateLabel);
-            this.Controls.Add(this.library_dateDateTimePicker);
+            this.Controls.Add(this.dt_library_date);
             this.Controls.Add(library_num_collectionsLabel);
-            this.Controls.Add(this.library_num_collectionsTextBox);
             this.Controls.Add(library_pathLabel);
-            this.Controls.Add(this.library_pathTextBox);
+            this.Controls.Add(this.txt_library_path_metadata);
             this.Controls.Add(library_inventoryLabel);
-            this.Controls.Add(this.library_inventoryTextBox);
-            this.Controls.Add(this.libraryListBox);
+            this.Controls.Add(this.btn_close_library);
             this.Controls.Add(this.btn_update_library);
-            this.Controls.Add(this.libraryBindingNavigator);
             this.Name = "ViewAndAddLibrary";
-            this.Text = "View and Add Library";
+            this.Text = "View and Update Library Metadata";
             this.Load += new System.EventHandler(this.ViewAndAddLibrary_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grindpipe_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingNavigator)).EndInit();
-            this.libraryBindingNavigator.ResumeLayout(false);
-            this.libraryBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,29 +255,21 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btn_update_library;
+        private System.Windows.Forms.BindingSource libraryBindingSource1;
+        private System.Windows.Forms.Button btn_close_library;
         private grindpipe_dbDataSet grindpipe_dbDataSet;
         private System.Windows.Forms.BindingSource libraryBindingSource;
         private grindpipe_dbDataSetTableAdapters.libraryTableAdapter libraryTableAdapter;
         private grindpipe_dbDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator libraryBindingNavigator;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.Button btn_update_library;
-        private System.Windows.Forms.BindingSource libraryBindingSource1;
-        private System.Windows.Forms.ListBox libraryListBox;
-        private System.Windows.Forms.TextBox library_idTextBox;
-        private System.Windows.Forms.TextBox library_nameTextBox;
-        private System.Windows.Forms.DateTimePicker library_dateDateTimePicker;
-        private System.Windows.Forms.TextBox library_num_collectionsTextBox;
-        private System.Windows.Forms.TextBox library_pathTextBox;
-        private System.Windows.Forms.TextBox library_inventoryTextBox;
-        private System.Windows.Forms.Button btn_close_library;
+        private System.Windows.Forms.TextBox txt_library_name_metadata;
+        private System.Windows.Forms.DateTimePicker dt_library_date;
+        private System.Windows.Forms.TextBox txt_library_path_metadata;
+        private System.Windows.Forms.BindingSource libraryBindingSource2;
+        private System.Windows.Forms.ComboBox lb_lib_name;
+        private System.Windows.Forms.RichTextBox txt_inventory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label lbl_char;
     }
 }

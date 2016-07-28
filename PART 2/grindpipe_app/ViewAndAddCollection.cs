@@ -13,7 +13,8 @@ namespace grindpipe_app
 {
     public partial class ViewAndAddCollection : Form
     {
-
+        public List<string> collection_list;
+        ClassesDigitalLibrary dl = new ClassesDigitalLibrary();
         public ViewAndAddCollection()
         {
             InitializeComponent();
@@ -21,39 +22,70 @@ namespace grindpipe_app
 
         private void collectionBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.collectionBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.grindpipe_dbDataSet);
+          
 
         }
 
         private void ViewAndAddCollection_Load(object sender, EventArgs e)
         {
-           
-           txt_col_name.Enabled = txt_lib_name.Enabled = txt_col_path.Enabled = false;
-            // TODO: This line of code loads data into the 'grindpipe_dbDataSet.collection' table. You can move, or remove it, as needed.
-            this.collectionTableAdapter.Fill(this.grindpipe_dbDataSet.collection);
-            // TODO: This line of code loads data into the 'grindpipe_dbDataSet.collection' table. You can move, or remove it, as needed.
-            this.collectionTableAdapter.Fill(this.grindpipe_dbDataSet.collection);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
+           txt_col_name.Enabled = txt_lib_name.Enabled = txt_col_path.Enabled = false;
+           collection_list = dl.select_all_from_collection_metadata();
+           for (int i = 0; i < collection_list.Count; i++)
+           {
+               string[] tmp = collection_list[i].Split(' ');
+               cb_list_coll.Items.Add(tmp[1] +"/"+tmp[0]);
+               if (Global_coll.GlobalVar_coll.Contains(tmp[1]) && Global_coll.GlobalVar_coll.Contains(tmp[0]))
+               {
+                   cb_list_coll.Text = Global_coll.GlobalVar_coll;
+               }
+           }
         }
 
         private void collectionBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            this.Validate();
-            this.collectionBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.grindpipe_dbDataSet);
-            grindpipe_dbDataSet.Tables[0].AcceptChanges();
+         
+         
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-       
+            string collection_name = cb_list_coll.SelectedItem.ToString();
+            string collection_date = txt_data_time.Text;
+            string collection_num_images = txt_num_col_img.Value.ToString();
+            dl.update_collection(collection_name, collection_date, collection_num_images);
+           // this.Close();
+        
         }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cb_list_coll.SelectedItem.ToString() != "" || cb_list_coll.SelectedItem.ToString() != null)
+            {
+                for (int i = 0; i < collection_list.Count; i++)
+                {
+                    string[] tmp = collection_list[i].Split(' ');
+                    if (cb_list_coll.SelectedItem.ToString().Contains(tmp[1]) && cb_list_coll.SelectedItem.ToString().Contains(tmp[0]))
+                    {
+                        txt_lib_name.Text = tmp[1];
+                        txt_col_name.Text = tmp[0];
+                        txt_data_time.Text = tmp[2];
+                        txt_col_path.Text = tmp[3];
+                        if (tmp[4] == "") tmp[4] = "0";
+                        txt_num_col_img.Value = Int32.Parse(tmp[4]);
+                        break;
+                    }
+                }
+            }
         }
 
 

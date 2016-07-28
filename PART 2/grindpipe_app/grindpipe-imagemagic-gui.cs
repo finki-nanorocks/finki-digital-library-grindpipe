@@ -28,11 +28,11 @@ namespace grindpipe_app
 
         private void Editor_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.StartPosition = FormStartPosition.CenterParent;
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             txt_path.ReadOnly = true;
             rb_none.Checked = true;
