@@ -77,8 +77,6 @@ C:\Users\Win7\Desktop\GRINDPIPE-master\PART 2\grindpipe_app\obj\Debug\grindpipe_
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\grindpipe_app.exe.config
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\obj\Debug\grindpipe_app.exe
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\obj\Debug\grindpipe_app.pdb
-C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\grindpipe_db.mdf
-C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\grindpipe_db_log.ldf
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\grindpipe_app.exe
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\grindpipe_app.pdb
 C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\obj\Debug\grindpipe_app.csprojResolveAssemblyReference.cache
@@ -107,3 +105,5 @@ C:\Users\voknan\Desktop\PART 2\grindpipe_app\obj\Debug\grindpipe_app.ViewAndAddI
 C:\Users\voknan\Desktop\PART 2\grindpipe_app\obj\Debug\grindpipe_app.ViewAndAddLibrary.resources
 C:\Users\voknan\Desktop\PART 2\grindpipe_app\obj\Debug\grindpipe_app.csproj.GenerateResource.Cache
 C:\Users\voknan\Desktop\PART 2\grindpipe_app\obj\Debug\grindpipe_app.AddName.resources
+C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\Database\grindpipe_db.mdf
+C:\Users\voknan\Desktop\GITHUB\GRINDPIPE\PART 2\grindpipe_app\bin\Debug\Database\grindpipe_db_log.ldf

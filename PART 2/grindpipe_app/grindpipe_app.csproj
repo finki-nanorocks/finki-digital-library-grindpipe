@@ -61,12 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddName.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddName.Designer.cs">
-      <DependentUpon>AddName.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClassesDigitalLibrary.cs" />
     <Compile Include="grindpipe-dl.cs">
       <SubType>Form</SubType>
@@ -119,9 +113,6 @@
     <Compile Include="ViewAndAddLibrary.Designer.cs">
       <DependentUpon>ViewAndAddLibrary.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddName.resx">
-      <DependentUpon>AddName.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Grindpipe-dl.resx">
       <DependentUpon>grindpipe-dl.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,10 +184,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="grindpipe_db.mdf">
+    <Content Include="Database\grindpipe_db.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="grindpipe_db_log.ldf">
+    <Content Include="Database\grindpipe_db_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>grindpipe_db.mdf</DependentUpon>
     </Content>
