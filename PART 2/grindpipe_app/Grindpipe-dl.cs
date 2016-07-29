@@ -313,16 +313,17 @@ namespace grindpipe_app
 
         private void button14_Click(object sender, EventArgs e)
         {
-            lb_library.Items.Clear();
-            lb_collection.Items.Clear();
-            lb_images.Items.Clear();
+            //lb_library.Items.Clear();
+            //lb_collection.Items.Clear();
+            //lb_images.Items.Clear();
 
-            digital_library = dl.select_all_from_library();
-            for (int i = 0; i < digital_library.Count; i++)
-            {
-                string[] tmp = digital_library[i].Split(' ');
-                lb_library.Items.Add(tmp[0]);
-            }
+            //digital_library = dl.select_all_from_library();
+            //for (int i = 0; i < digital_library.Count; i++)
+            //{
+            //    string[] tmp = digital_library[i].Split(' ');
+            //    lb_library.Items.Add(tmp[0]);
+            //}
+            MessageBox.Show("Comming in next version.");
         }
 
         private void createDigitalLibraryToolStripMenuItem1_Click(object sender, EventArgs e)
