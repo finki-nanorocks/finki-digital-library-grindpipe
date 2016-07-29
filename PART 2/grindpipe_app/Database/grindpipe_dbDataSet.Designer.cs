@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace grindpipe_app {
+namespace grindpipe_app.Database {
     
     
     /// <summary>
@@ -2021,7 +2021,7 @@ namespace grindpipe_app {
         }
     }
 }
-namespace grindpipe_app.grindpipe_dbDataSetTableAdapters {
+namespace grindpipe_app.Database.grindpipe_dbDataSetTableAdapters {
     
     
     /// <summary>

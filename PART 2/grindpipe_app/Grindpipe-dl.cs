@@ -448,7 +448,8 @@ namespace grindpipe_app
                     string lb_path = dl.select_library_name_get_library_path(lb_library.SelectedItem.ToString());
                     dl.delete_row_by_library_name_in_library(lb_library.SelectedItem.ToString());
                     dl.delete_row_by_library_name_in_collection(lb_library.SelectedItem.ToString());
-                    dl.delete_row_for_image(lb_images.SelectedItem.ToString(), lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
+                    dl.delete_row_by_library_name_in_image(lb_library.SelectedItem.ToString());
+                
 
 
                     dl.del_dl_or_del_col(lb_path, lb_library.SelectedItem.ToString());

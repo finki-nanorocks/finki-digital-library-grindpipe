@@ -648,7 +648,7 @@ namespace grindpipe_app
                 cmd.Parameters.AddWithValue("@library_name", library_name);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Success!");
+               // MessageBox.Show("Success!");
             }
             catch (Exception err)
             {
@@ -707,7 +707,7 @@ namespace grindpipe_app
             catch (Exception err)
             {
                 con.Close();
-                MessageBox.Show("Can't delete collection from database.");
+                MessageBox.Show("Can't delete collection from collection database.");
             }
         }
         public void delete_row_by_library_name_in_library(string library_name)
@@ -724,7 +724,24 @@ namespace grindpipe_app
             catch (Exception err)
             {
                 con.Close();
-                MessageBox.Show("Can't delete library from database.");
+                MessageBox.Show("Can't delete library from library database.");
+            }
+        }
+        public void delete_row_by_library_name_in_image(string library_name)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM image WHERE library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+               // MessageBox.Show("Success!");
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't delete library from image database.");
             }
         }
 

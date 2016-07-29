@@ -37,10 +37,9 @@
             this.btn_update_library = new System.Windows.Forms.Button();
             this.libraryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btn_close_library = new System.Windows.Forms.Button();
-            this.grindpipe_dbDataSet = new grindpipe_app.grindpipe_dbDataSet();
+           
             this.libraryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.libraryTableAdapter = new grindpipe_app.grindpipe_dbDataSetTableAdapters.libraryTableAdapter();
-            this.tableAdapterManager = new grindpipe_app.grindpipe_dbDataSetTableAdapters.TableAdapterManager();
+           
             this.txt_library_name_metadata = new System.Windows.Forms.TextBox();
             this.dt_library_date = new System.Windows.Forms.DateTimePicker();
             this.txt_library_path_metadata = new System.Windows.Forms.TextBox();
@@ -56,7 +55,7 @@
             library_pathLabel = new System.Windows.Forms.Label();
             library_inventoryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grindpipe_dbDataSet)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -129,25 +128,19 @@
             // 
             // grindpipe_dbDataSet
             // 
-            this.grindpipe_dbDataSet.DataSetName = "grindpipe_dbDataSet";
-            this.grindpipe_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+          
             // 
             // libraryBindingSource
             // 
-            this.libraryBindingSource.DataMember = "library";
-            this.libraryBindingSource.DataSource = this.grindpipe_dbDataSet;
+        
             // 
             // libraryTableAdapter
             // 
-            this.libraryTableAdapter.ClearBeforeFill = true;
+          
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.collectionTableAdapter = null;
-            this.tableAdapterManager.imageTableAdapter = null;
-            this.tableAdapterManager.libraryTableAdapter = this.libraryTableAdapter;
-            this.tableAdapterManager.UpdateOrder = grindpipe_app.grindpipe_dbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+        
             // 
             // txt_library_name_metadata
             // 
@@ -172,8 +165,7 @@
             // 
             // libraryBindingSource2
             // 
-            this.libraryBindingSource2.DataMember = "library";
-            this.libraryBindingSource2.DataSource = this.grindpipe_dbDataSet;
+           
             // 
             // lb_lib_name
             // 
@@ -244,7 +236,6 @@
             this.Text = "View and Update Library Metadata";
             this.Load += new System.EventHandler(this.ViewAndAddLibrary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grindpipe_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -258,10 +249,9 @@
         private System.Windows.Forms.Button btn_update_library;
         private System.Windows.Forms.BindingSource libraryBindingSource1;
         private System.Windows.Forms.Button btn_close_library;
-        private grindpipe_dbDataSet grindpipe_dbDataSet;
+       
         private System.Windows.Forms.BindingSource libraryBindingSource;
-        private grindpipe_dbDataSetTableAdapters.libraryTableAdapter libraryTableAdapter;
-        private grindpipe_dbDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+       
         private System.Windows.Forms.TextBox txt_library_name_metadata;
         private System.Windows.Forms.DateTimePicker dt_library_date;
         private System.Windows.Forms.TextBox txt_library_path_metadata;

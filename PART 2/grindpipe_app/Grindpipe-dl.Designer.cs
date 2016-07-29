@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grindpipe_dl));
             this.lb_library = new System.Windows.Forms.ListBox();
             this.lb_collection = new System.Windows.Forms.ListBox();
             this.lb_images = new System.Windows.Forms.ListBox();
@@ -523,6 +524,7 @@
             this.Controls.Add(this.lb_library);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Grindpipe_dl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -78,7 +78,13 @@ namespace grindpipe_app
             string library_name = txt_lb_name.Text;
             string image_extenzion = Path.GetExtension(image_name);
 
+            if (image_inventory.Length > 21)
+            {
+                MessageBox.Show("Image description must have max 20 caracters.");
+                return;
+            }
             dl.update_image(image_name, collection_name, library_name, image_width, image_height, image_extenzion, image_path, image_allow_print, image_inventory, image_keyword);
+            this.Close();
         }
     }
 }
