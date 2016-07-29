@@ -141,7 +141,7 @@ namespace grindpipe_app
             {
                 string image_keyword = lb_image_keyword.SelectedItem.ToString();
                 string[] tmp = image_keyword.Split('/');
-                string image_path = dl.select_image_path_for_image_name(tmp[0]);
+                string image_path = dl.select_image_path_for_image_name(tmp[0],tmp[2]);
                 c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
             }
         }
@@ -212,9 +212,9 @@ namespace grindpipe_app
                 }
                 string library_name = lb_library.SelectedItem.ToString();
                 string library_path = dl.select_library_name_get_library_path(library_name);
-              //  MessageBox.Show(library_path);
+         
                 dl.insert_to_collection(library_name, "col_" + collection_name, library_path + "\\" + library_name + "\\col_" + collection_name);
-                dl.create_collection(library_path + "//" + library_name , "col_" + collection_name);
+                dl.create_collection(library_path + "//" + library_name , "col_" + collection_name); //for bat
                 lb_collection.Items.Add("col_"+collection_name);
                
             }
@@ -223,9 +223,9 @@ namespace grindpipe_app
         private void lb_collection_SelectedIndexChanged(object sender, EventArgs e)
         {
             lb_images.Items.Clear();
-            if (lb_collection.SelectedIndex != -1)
+            if (lb_collection.SelectedIndex != -1 && lb_library.SelectedIndex != -1)
             {
-                digital_images = dl.select_from_image_where_collection_name_is(lb_collection.SelectedItem.ToString());
+                digital_images = dl.select_from_image_where_collection_name_is(lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
                 for (int i = 0; i < digital_images.Count; i++)
                 {
                     string[] tmp = digital_images[i].Split(' ');
@@ -303,7 +303,7 @@ namespace grindpipe_app
             }
             else
             {
-                Global_img.GlobalVar_img = lb_images.SelectedItem.ToString();
+                Global_img.GlobalVar_img = lb_images.SelectedItem.ToString()+" "+lb_collection.SelectedItem.ToString()+" "+lb_library.SelectedItem.ToString();
                 // should supplement
                 ViewAndAddImage v = new ViewAndAddImage();
                 v.Show();
@@ -350,13 +350,16 @@ namespace grindpipe_app
                 string library_name = lb_library.SelectedItem.ToString();
                 string library_path = dl.select_library_name_get_library_path(library_name);
                 string collection_name = lb_collection.SelectedItem.ToString();
-                if (library_path != "")
+                string collection_path = dl.select_collection_path_for_collection_name(collection_name, library_name);
+                
+                if ((library_path != "" || library_path != null))
                 {
                     dl.current_digital_library_overview_and_collection(library_path + "\\" +library_name, collection_name);
                 }
                 else
                 {
-                    MessageBox.Show("Path is empty.");
+                    MessageBox.Show("Collection_path is empty. Collection not exist.");
+                   
                 }
 
 
@@ -381,27 +384,28 @@ namespace grindpipe_app
                 if (path.Contains(".jpg") || path.Contains(".png") || path.Contains(".gif") || path.Contains(".ico") || path.Contains(".JPG") || path.Contains(".PNG") || path.Contains(".GIF") || path.Contains(".ICO"))
                 {
                    string image_path = ofd.FileName.ToString(); // ja pokazuva celosnata pateka od izbraj fajl
-                
+                   string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString(),lb_library.SelectedItem.ToString());
+                  
                    string image_name = Path.GetFileName(image_path); //ja zema slikata od pateka
-                   for (int i = 0; i<lb_images.Items.Count; i++ )
+                  
+                   for (int i = 0; i<lb_images.Items.Count; i++ ) // proverka za isto ime vo lista
                    {
-                       if(image_name.Contains(lb_images.Items[i].ToString()))
+                       if (image_name.Contains(lb_images.Items[i].ToString()))
                        {
-                           MessageBox.Show("Can't add image with same Image name.");
-                           return;
+                           MessageBox.Show("Can't add image with same Image name."); return;
                        }
                    }
-                   string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString());
-                  // forma za keyword
+
+                  //// forma za keyword
                    string image_keyword = dl.ShowKeyword("Select keyword", "Select keyword for Image");
                    if (image_keyword == "" || image_keyword == null)
                    {
                        MessageBox.Show("You must select keyword.");
                        return;
                    }
-                   dl.current_image_move(image_name, Path.GetDirectoryName(image_path), collection_path);
-                   lb_images.Items.Add(image_name);
-                    dl.insert_to_image(image_name, lb_collection.SelectedItem.ToString(), collection_path + "\\" + image_name, image_keyword);
+                   dl.current_image_move(image_name, Path.GetDirectoryName(image_path), collection_path); // za bat
+                   lb_images.Items.Add(image_name); // vo lista
+                   dl.insert_to_image(image_name, lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString(), collection_path+"\\"+image_name, image_keyword);
                 }
                 else
                 {
@@ -414,14 +418,15 @@ namespace grindpipe_app
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if(lb_images.SelectedIndex == -1)
+            if (lb_images.SelectedIndex == -1 && lb_collection.SelectedIndex == -1 || lb_library.SelectedIndex == -1)
             {
                 MessageBox.Show("You must first select Image, from Images list.");
                 return;
             }
             else
             {
-                string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString());
+                string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
+                if (image_path == "" || image_path == null) return;
                 c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
             }
         }
@@ -442,16 +447,14 @@ namespace grindpipe_app
                     string lb_path = dl.select_library_name_get_library_path(lb_library.SelectedItem.ToString());
                     dl.delete_row_by_library_name_in_library(lb_library.SelectedItem.ToString());
                     dl.delete_row_by_library_name_in_collection(lb_library.SelectedItem.ToString());
-                    // add metod for delete images in db
+                    dl.delete_row_for_image(lb_images.SelectedItem.ToString(), lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
 
 
                     dl.del_dl_or_del_col(lb_path, lb_library.SelectedItem.ToString());
                     for (int i = 0; i < lb_library.SelectedItems.Count; i++)
                         lb_library.Items.Remove(lb_library.SelectedItems[i]);
                 }
-                else if (dialogResult == DialogResult.No)
-                {
-                }
+              
               
 
             }
@@ -470,18 +473,16 @@ namespace grindpipe_app
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString());
+                    string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString(),lb_library.SelectedItem.ToString());
                     DirectoryInfo parentDir = Directory.GetParent(collection_path);
-                    MessageBox.Show(parentDir.ToString());
-                    dl.delete_row_by_collection_name_in_collection(lb_collection.SelectedItem.ToString());
+              //      MessageBox.Show(parentDir.ToString());
+                    dl.delete_row_by_collection_name_in_collection(lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
                     dl.del_dl_or_del_col(parentDir.ToString(), lb_collection.SelectedItem.ToString());
-
+                    dl.delete_row_for_image_coll_and_lb(lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
                     for (int i = 0; i < lb_collection.SelectedItems.Count; i++)
                         lb_collection.Items.Remove(lb_collection.SelectedItems[i]);
                 }
-                else if (dialogResult == DialogResult.No)
-                {
-                }
+               
 
 
             }
@@ -490,6 +491,35 @@ namespace grindpipe_app
         private void disclaimersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Any manual changes that are made to the files of the software will not be updated.");
+        }
+
+        private void btn_del_sel_img_Click(object sender, EventArgs e)
+        {
+            if (lb_collection.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must first select Image");
+            }
+            else
+            {
+                try
+                {
+                    DialogResult dialogResult = MessageBox.Show("Аre you sure you want to delete image \nwith name: " + lb_images.SelectedItem.ToString(), "Image delete", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
+                        DirectoryInfo parentDir = Directory.GetParent(image_path);
+                        dl.delete_row_for_image(lb_images.SelectedItem.ToString(), lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
+                        dl.del_img_batfile(parentDir.ToString(), lb_images.SelectedItem.ToString());
+
+                        for (int i = 0; i < lb_images.SelectedItems.Count; i++)
+                            lb_images.Items.Remove(lb_images.SelectedItems[i]);
+                    }
+                }
+                catch (Exception err) { }
+
+
+            }
         }
 
         

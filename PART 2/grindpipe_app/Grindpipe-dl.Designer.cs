@@ -46,6 +46,7 @@
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createDigitalLibraryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.disclaimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.communityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,6 @@
             this.lb_image_keyword = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_keyword = new System.Windows.Forms.ComboBox();
-            this.disclaimersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -244,6 +244,13 @@
             this.createDigitalLibraryToolStripMenuItem1.Text = "Create digital library";
             this.createDigitalLibraryToolStripMenuItem1.Click += new System.EventHandler(this.createDigitalLibraryToolStripMenuItem1_Click);
             // 
+            // disclaimersToolStripMenuItem
+            // 
+            this.disclaimersToolStripMenuItem.Name = "disclaimersToolStripMenuItem";
+            this.disclaimersToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.disclaimersToolStripMenuItem.Text = "Disclaimers";
+            this.disclaimersToolStripMenuItem.Click += new System.EventHandler(this.disclaimersToolStripMenuItem_Click);
+            // 
             // aboutUsToolStripMenuItem1
             // 
             this.aboutUsToolStripMenuItem1.Name = "aboutUsToolStripMenuItem1";
@@ -313,6 +320,7 @@
             this.btn_del_sel_img.Text = "Delete selected image";
             this.toolTip12.SetToolTip(this.btn_del_sel_img, "Delete currently selected image");
             this.btn_del_sel_img.UseVisualStyleBackColor = true;
+            this.btn_del_sel_img.Click += new System.EventHandler(this.btn_del_sel_img_Click);
             // 
             // btn_img_editor
             // 
@@ -398,9 +406,9 @@
             // 
             this.bnt_close.Location = new System.Drawing.Point(519, 437);
             this.bnt_close.Name = "bnt_close";
-            this.bnt_close.Size = new System.Drawing.Size(186, 31);
+            this.bnt_close.Size = new System.Drawing.Size(186, 42);
             this.bnt_close.TabIndex = 23;
-            this.bnt_close.Text = "Close";
+            this.bnt_close.Text = "Close Grindpipe Maker";
             this.toolTip7.SetToolTip(this.bnt_close, "Close the Grindpipe digital library maker application");
             this.bnt_close.UseVisualStyleBackColor = true;
             this.bnt_close.Click += new System.EventHandler(this.bnt_close_Click);
@@ -420,9 +428,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(728, 437);
+            this.button1.Location = new System.Drawing.Point(727, 436);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 31);
+            this.button1.Size = new System.Drawing.Size(144, 42);
             this.button1.TabIndex = 29;
             this.button1.Text = "View searched images";
             this.toolTip8.SetToolTip(this.button1, "view selected searched images");
@@ -480,13 +488,6 @@
             this.cb_keyword.Name = "cb_keyword";
             this.cb_keyword.Size = new System.Drawing.Size(352, 21);
             this.cb_keyword.TabIndex = 30;
-            // 
-            // disclaimersToolStripMenuItem
-            // 
-            this.disclaimersToolStripMenuItem.Name = "disclaimersToolStripMenuItem";
-            this.disclaimersToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.disclaimersToolStripMenuItem.Text = "Disclaimers";
-            this.disclaimersToolStripMenuItem.Click += new System.EventHandler(this.disclaimersToolStripMenuItem_Click);
             // 
             // Grindpipe_dl
             // 

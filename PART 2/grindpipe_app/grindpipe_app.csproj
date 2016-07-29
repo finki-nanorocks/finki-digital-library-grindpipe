@@ -90,9 +90,6 @@
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
-    <Compile Include="MetaDataLibrary.cs" />
-    <Compile Include="MetaDataCollection.cs" />
-    <Compile Include="MetaDataImages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewAndAddCollection.cs">
@@ -184,10 +181,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\grindpipe_db.mdf">
+    <Content Include="grindpipe_db.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database\grindpipe_db_log.ldf">
+    <Content Include="grindpipe_db_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>grindpipe_db.mdf</DependentUpon>
     </Content>
@@ -196,6 +193,9 @@
     <Content Include="img_app\logo.png" />
     <Content Include="img_app\background.png" />
     <Content Include="img_app\logo1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

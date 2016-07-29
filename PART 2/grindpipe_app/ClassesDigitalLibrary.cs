@@ -45,7 +45,6 @@ namespace grindpipe_app
         ClassesImageMagic classesIM = new ClassesImageMagic();
         public string START_PATH_BAT_DL = Path.GetTempPath() + "digital_library_file.bat"; // finding path of the application
         public string FINISH_PATH_DL = @"start """" /d";
-
         public string ShowDialog(string text, string caption, string type = "dl_")
         {
             Form prompt = new Form()
@@ -128,12 +127,19 @@ namespace grindpipe_app
                 return "dl_" + name + " "+path.ToString();
             }
         }
-
-
-
         public string rm_dir(string name)
         {
             return "rmdir " + name + " /s /q";
+        }
+        public string del_img_code(string name)
+        {
+            return "del " + name ;
+        }
+        public void del_img_batfile(string apsolut_path, string image_name)
+        {
+            string code = "";
+            code += del_img_code(image_name);
+            classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, apsolut_path, code);
         }
         public void del_dl_or_del_col(string apsolut_path, string lib_name_or_col_name)
         {
@@ -141,7 +147,6 @@ namespace grindpipe_app
             code += rm_dir(lib_name_or_col_name);
             classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, apsolut_path, code);
         }
-
         public string make_dir(string name)
         {
             return "mkdir " + name;
@@ -163,7 +168,8 @@ namespace grindpipe_app
         }
         public void current_image_move(string image_name,string image_path, string collection_path)
         {
-            string code = "copy " + image_name+" "+collection_path;
+            string code = "\ncopy " + image_name+" "+collection_path;
+           // MessageBox.Show(START_PATH_BAT_DL + "\n" + image_path + "\n" + code);
             classesIM.MAKE_BAT_AND_START(START_PATH_BAT_DL, image_path, code);
         }
         public void create_collection(string apsolut_path, string collection_name)
@@ -289,19 +295,21 @@ namespace grindpipe_app
                 return l;
             }
         }
-        public string select_collection_path_for_collection_name(string collection_name)
+        public string select_collection_path_for_collection_name(string collection_name,string library_name)
         {
 
             string path = "";
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE collection_name=@collection_name", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE collection_name=@collection_name AND @library_name=@library_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    path += r.GetString(4); // return string of library_path
+                    path = r.GetString(4); // return string of library_path
+                   
                 }
                 con.Close();
                 return path;
@@ -314,19 +322,21 @@ namespace grindpipe_app
                 return path;
             }
         }
-        public string select_image_path_for_image_name(string image_name)
+        public string select_image_path_for_image_name(string image_name,string library_name)
         {
 
             string path = "";
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name=@image_name", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name=@image_name AND library_name=@library_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@image_name", image_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    path += r.GetString(6); // return string of library_path
+                    path = r.GetString(7); // return string of library_path
+                    break;
                 }
                 con.Close();
                 return path;
@@ -339,6 +349,7 @@ namespace grindpipe_app
                 return path;
             }
         }
+      
         public string select_library_name_get_library_inventory(string library_name)
         {
             try
@@ -387,22 +398,31 @@ namespace grindpipe_app
                 return "";
             }
         }
-        public List<string> select_from_image_where_collection_name_is(string collection_name)
+        public List<string> select_from_image_where_collection_name_is(string collection_name, string library_name)
         {
             List<string> l = new List<string>();
-          
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE collection_name=@collection_name", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@collection_name", collection_name);
-            SqlDataReader r = cmd.ExecuteReader();
-            while (r.Read())
+            try
             {
-                l.Add(r.GetString(1) + " " + r.GetString(6)); // return list of library_name and library_path
+                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE collection_name=@collection_name AND library_name = @library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    string path = r.GetString(7);
+
+                    l.Add(r.GetString(1) + " " + path); // return list of library_name and library_path
+                }
+                con.Close();
+                return l;
             }
-            con.Close();
-            return l;
-           
+            catch(Exception err)
+            {
+                MessageBox.Show("Can't select data from image table in database.");
+                return l;
+            }
 
         }
         public List<string> select_images_by_keyword(string image_keyword)
@@ -416,13 +436,61 @@ namespace grindpipe_app
             SqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
-                l.Add(r.GetString(1) + "/" + r.GetString(2)); // return list of library_name and library_path
+                l.Add(r.GetString(1) + "/" + r.GetString(2) + "/" + r.GetString(3)); // return list of library_name and library_path
             }
             con.Close();
             return l;
         }
-   
 
+        public string select_from_image_selected(string image_name,string collection_name, string library_name)
+        {
+            string l = "";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name = @image_name AND collection_name=@collection_name AND library_name = @library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@image_name", image_name);
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    string width = r[4].ToString();
+                    string height = r[5].ToString();
+                    string image_path = r[7].ToString();
+                    string print = r[8].ToString();
+                    string inventory = r[9].ToString();
+                    string keyword = r[10].ToString();
+
+                    if(width==null && height==null || width == "" || height == "")
+                    {
+                        width = height = "0";
+                    }
+                    if(print == "" || print==null)
+                    {
+                        print = "false";
+                    }
+                    if(inventory == "" || inventory == null)
+                    {
+                        inventory = "max20caracters";
+                    }
+                    if(keyword == "" || keyword == null)
+                    {
+                        keyword = "other";
+                    }
+                    l = width + " " + height + " " + image_path + " " + print + " " + inventory + " " + keyword; // return list item of all variables
+                }
+                con.Close();
+                return l;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Can't select data from image table in database.");
+                return l;
+            }
+
+        }
         public void insert_to_library(string library_name, string library_path)
         {
             try
@@ -461,14 +529,15 @@ namespace grindpipe_app
                 con.Close();
             }
         }
-        public void insert_to_image(string image_name, string collection_name, string image_path, string image_keyword)
+        public void insert_to_image(string image_name, string collection_name,string library_name, string image_path, string image_keyword)
         {
             try
             {
 
-                SqlCommand insert = new SqlCommand("INSERT INTO [dbo].[image] ([image_name], [collection_name], [image_path], [image_keyword]) VALUES (@image_name,@collection_name, @image_path, @image_keyword)", con);
+                SqlCommand insert = new SqlCommand("INSERT INTO [dbo].[image] ([image_name], [collection_name],[library_name], [image_path], [image_keyword]) VALUES (@image_name,@collection_name,@library_name, @image_path, @image_keyword)", con);
                 insert.Parameters.AddWithValue("@image_name", image_name);
                 insert.Parameters.AddWithValue("@collection_name", collection_name);
+                insert.Parameters.AddWithValue("@library_name", library_name);
                 insert.Parameters.AddWithValue("@image_path", image_path);
                 insert.Parameters.AddWithValue("@image_keyword", image_keyword);
                 con.Open();
@@ -535,16 +604,67 @@ namespace grindpipe_app
 
 
         }
-
-
-
-        public void delete_row_by_image_name(string image_name)
+        public void update_image(string image_name, string collection_name, string library_name, string image_width, string image_height, string image_extension, string image_path, string image_allow_print, string image_inventory, string image_keyword)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM image WHERE image_name=@image_name", con);
+            if (image_extension == "" || image_extension == null) image_extension = "max20caracters";
+            SqlCommand cmd = new SqlCommand("UPDATE image SET image_width=@image_width,image_height=@image_height,image_extension=@image_extension,image_path=@image_path,image_allow_print=@image_allow_print,image_inventory=@image_inventory,image_keyword=@image_keyword WHERE image_name=@image_name AND collection_name=@collection_name AND library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@image_width", image_width);
+                cmd.Parameters.AddWithValue("@image_height", image_height);
+                cmd.Parameters.AddWithValue("@image_extension", image_extension);
+                cmd.Parameters.AddWithValue("@image_path", image_path);
+                cmd.Parameters.AddWithValue("@image_allow_print", image_allow_print);
+                cmd.Parameters.AddWithValue("@image_inventory", image_inventory);
+                cmd.Parameters.AddWithValue("@image_keyword", image_keyword);
+                cmd.Parameters.AddWithValue("@image_name", image_name);
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+              
+
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+                MessageBox.Show("Success!");
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't update selected image.");
+                return;
+            }
+
+        }
+
+
+        public void delete_row_for_image_coll_and_lb(string collection_name, string library_name)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM image WHERE collection_name=@collection_name AND library_name=@library_name", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Success!");
+            }
+            catch (Exception err)
+            {
+                con.Close();
+                MessageBox.Show("Can't delete image from database.");
+            }
+        }
+        public void delete_row_for_image(string image_name, string collection_name, string library_name)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM image WHERE image_name=@image_name AND collection_name=@collection_name AND library_name=@library_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@image_name", image_name);
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
                    cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Success!");
@@ -555,13 +675,14 @@ namespace grindpipe_app
                 MessageBox.Show("Can't delete image from database.");
             }
         }
-        public void delete_row_by_collection_name_in_collection(string collection_name)
+        public void delete_row_by_collection_name_in_collection(string collection_name, string library_name)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM collection WHERE collection_name=@collection_name", con);
+                SqlCommand cmd = new SqlCommand("DELETE FROM collection WHERE collection_name=@collection_name AND library_name=@library_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@collection_name", collection_name);
+                cmd.Parameters.AddWithValue("@library_name", library_name);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Success!");
