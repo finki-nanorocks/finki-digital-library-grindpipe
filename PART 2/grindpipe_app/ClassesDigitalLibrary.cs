@@ -301,15 +301,16 @@ namespace grindpipe_app
             string path = "";
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM collection WHERE collection_name=@collection_name AND @library_name=@library_name", con);
+               // MessageBox.Show(collection_name + "\n" + library_name);
+                SqlCommand cmd = new SqlCommand("SELECT collection_path FROM collection WHERE library_name=@library_name AND collection_name=@collection_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@collection_name", collection_name);
                 cmd.Parameters.AddWithValue("@library_name", library_name);
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    path = r.GetString(4); // return string of library_path
-                   
+                    path = r[0].ToString(); // return string of library_path
+                    break;
                 }
                 con.Close();
                 return path;
@@ -322,16 +323,17 @@ namespace grindpipe_app
                 return path;
             }
         }
-        public string select_image_path_for_image_name(string image_name,string library_name)
+        public string select_image_path_for_image_name(string image_name,string library_name, string collection_name)
         {
 
             string path = "";
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name=@image_name AND library_name=@library_name", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM image WHERE image_name=@image_name AND library_name=@library_name AND collection_name=@collection_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@image_name", image_name);
                 cmd.Parameters.AddWithValue("@library_name", library_name);
+                cmd.Parameters.AddWithValue("@collection_name", collection_name);
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -479,7 +481,7 @@ namespace grindpipe_app
                     {
                         keyword = "other";
                     }
-                    l = width + " " + height + " " + image_path + " " + print + " " + inventory + " " + keyword; // return list item of all variables
+                    l = width + "/" + height + "/" + image_path + "/" + print + "/" + inventory + "/" + keyword; // return list item of all variables
                 }
                 con.Close();
                 return l;
@@ -559,7 +561,7 @@ namespace grindpipe_app
                 SqlCommand cmd = new SqlCommand("UPDATE library SET library_date=@library_date, library_num_collections=@library_num_collections,library_inventory=@library_inventory  WHERE library_name=@library_name", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@library_name", library_name);
-                cmd.Parameters.AddWithValue("@library_date", library_date);
+                cmd.Parameters.AddWithValue("@library_date", Convert.ToDateTime(library_date));
                 cmd.Parameters.AddWithValue("@library_num_collections", library_num_collections);
                 cmd.Parameters.AddWithValue("@library_inventory", library_inventory);
 
@@ -572,7 +574,7 @@ namespace grindpipe_app
             {
                 con.Close();
                 MessageBox.Show("Can't update selected digital library");
-                return ;
+                return;
             }
 
 
@@ -586,7 +588,7 @@ namespace grindpipe_app
                 con.Open();
                 cmd.Parameters.AddWithValue("@library_name", library_name);
                 cmd.Parameters.AddWithValue("@collection_name", collection_name);
-                cmd.Parameters.AddWithValue("@collection_date", collection_date);
+                cmd.Parameters.AddWithValue("@collection_date", Convert.ToDateTime(collection_date));
                 cmd.Parameters.AddWithValue("@collection_num_images", collection_num_images);
 
                 cmd.ExecuteNonQuery();

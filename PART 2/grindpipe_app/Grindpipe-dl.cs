@@ -141,7 +141,7 @@ namespace grindpipe_app
             {
                 string image_keyword = lb_image_keyword.SelectedItem.ToString();
                 string[] tmp = image_keyword.Split('/');
-                string image_path = dl.select_image_path_for_image_name(tmp[0],tmp[2]);
+                string image_path = dl.select_image_path_for_image_name(tmp[0], tmp[2], tmp[1]);
                 c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
             }
         }
@@ -426,9 +426,16 @@ namespace grindpipe_app
             }
             else
             {
-                string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
-                if (image_path == "" || image_path == null) return;
-                c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
+                try
+                {
+                    string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString(), lb_collection.SelectedItem.ToString());
+                    if (image_path == "" || image_path == null) return;
+                    c.btn_info_and_view(image_path, c.FINISH_PATH, 2, true);
+                }catch(Exception err)
+                {
+                    MessageBox.Show("You must first select Image, from Images list.");
+                    return;
+                }
             }
         }
 
@@ -477,7 +484,7 @@ namespace grindpipe_app
 
                     string collection_path = dl.select_collection_path_for_collection_name(lb_collection.SelectedItem.ToString(),lb_library.SelectedItem.ToString());
                     DirectoryInfo parentDir = Directory.GetParent(collection_path);
-              //      MessageBox.Show(parentDir.ToString());
+                    //MessageBox.Show(collection_path);
                     dl.delete_row_by_collection_name_in_collection(lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
                     dl.del_dl_or_del_col(parentDir.ToString(), lb_collection.SelectedItem.ToString());
                     dl.delete_row_for_image_coll_and_lb(lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
@@ -509,7 +516,7 @@ namespace grindpipe_app
                     if (dialogResult == DialogResult.Yes)
                     {
 
-                        string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
+                        string image_path = dl.select_image_path_for_image_name(lb_images.SelectedItem.ToString(), lb_library.SelectedItem.ToString(), lb_collection.SelectedItem.ToString());
                         DirectoryInfo parentDir = Directory.GetParent(image_path);
                         dl.delete_row_for_image(lb_images.SelectedItem.ToString(), lb_collection.SelectedItem.ToString(), lb_library.SelectedItem.ToString());
                         dl.del_img_batfile(parentDir.ToString(), lb_images.SelectedItem.ToString());

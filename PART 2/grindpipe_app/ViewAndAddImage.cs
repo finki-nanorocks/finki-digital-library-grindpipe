@@ -42,7 +42,7 @@ namespace grindpipe_app
             txt_col_name.Text = part[1];
             txt_lb_name.Text = part[2];
             txt_extenzion.Text = Path.GetExtension(part[0]);
-            string []data = dl.select_from_image_selected(part[0], part[1], part[2]).Split(' ');
+            string []data = dl.select_from_image_selected(part[0], part[1], part[2]).Split('/');
             
             numeric_width.Value =  Int32.Parse(data[0].ToString());
             //MessageBox.Show(data[1].ToString());
