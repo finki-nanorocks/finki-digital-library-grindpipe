@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -25,17 +26,18 @@ namespace grindpipe_app
 
         private void Grindpipe_dl_Load(object sender, EventArgs e)
         {
+
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.StartPosition = FormStartPosition.CenterParent;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-           digital_library =  dl.select_all_from_library();
-           for (int i = 0; i < digital_library.Count; i++ )
-           {
-               string[] tmp = digital_library[i].Split(' ');
-               lb_library.Items.Add(tmp[0]);
-           }
+            digital_library = dl.select_all_from_library();
+            for (int i = 0; i < digital_library.Count; i++)
+            {
+                string[] tmp = digital_library[i].Split(' ');
+                lb_library.Items.Add(tmp[0]);
+            }
         }
 
         private void Images_SelectedIndexChanged(object sender, EventArgs e)

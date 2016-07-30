@@ -188,12 +188,20 @@ namespace grindpipe_app
 
 
 
-        /*                      All about data base                     */
+        
+        /* ALL ABOUT DATABASE METODS
+         * 
+         * ->RELATIVE PATH FOR DATABASE
+         * 
+         * */
+        // public static string database_path = System.Configuration.ConfigurationManager.ConnectionStrings["grindpipe_db"].ConnectionString.ToString();
+        public static ConnectionStringSettings c1 = ConfigurationManager.ConnectionStrings["grindpipe_db"];
+        public static string fixedConnectionString = c1.ConnectionString.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
 
-        public static string database_path = System.Configuration.ConfigurationManager.ConnectionStrings["grindpipe_db"].ConnectionString.ToString();
-        SqlConnection con = new SqlConnection(database_path.ToString());
+        SqlConnection con = new SqlConnection(fixedConnectionString);
 
-
+       
+       
         public List<string> select_all_from_library_metadata()
         {
             List<string> l = new List<string>();
