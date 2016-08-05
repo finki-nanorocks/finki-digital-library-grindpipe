@@ -26,7 +26,11 @@ namespace grindpipe_app
 
         private void Grindpipe_dl_Load(object sender, EventArgs e)
         {
+         //ConnectionStringSettings c1 = ConfigurationManager.ConnectionStrings["grindpipe_db"];
+         //string fixedConnectionString = c1.ConnectionString.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
 
+         //MessageBox.Show(fixedConnectionString); return;
+            
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.StartPosition = FormStartPosition.CenterParent;
