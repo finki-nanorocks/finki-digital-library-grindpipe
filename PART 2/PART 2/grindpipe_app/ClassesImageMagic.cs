@@ -118,7 +118,6 @@ namespace grindpipe_app
             full_code += "convert pom2.png " + img + " +swap -append " + img_gen + "\n";
             full_code += "del pom1.png\n";
             full_code += "del pom2.png\n";
-
             return full_code;
         }
 
