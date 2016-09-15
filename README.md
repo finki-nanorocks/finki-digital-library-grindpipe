@@ -25,5 +25,5 @@ http://www.grindpipe.ml
 
 # GRINDPIPE
 Authors:
-* Andrej Nankov [@ultimatenano] (https://github.com/asknankov)
+* Andrej Nankov [@asknankov] (https://github.com/asknankov)
 * Aleksandar Babic [@Babic22] (https://github.com/Babic22)
