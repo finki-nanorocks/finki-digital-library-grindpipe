@@ -1,6 +1,6 @@
 
 
-![alt tag](http://grindpipe.ml/assets/images/logo-427x432-41.png)
+![alt text](https://lh4.googleusercontent.com/N6TjbCMUmLVew9QWJyumcfrhs4DjjToShDAwfOdB8PNCGbZMpE70ekFRRzqb9a2iydq4zUWDug=w271)
 
 #Introduction
 
@@ -21,9 +21,9 @@ The user will be running the program through a graphical user interface that wil
 
 The application needs to run on devices with a minimum of 2 GB of RAM and at least windows 7 operating system.
 
-http://www.grindpipe.ml
+http://www.grindpipe.tk
 
 # GRINDPIPE
 Authors:
-* Andrej Nankov [@asknankov] (https://github.com/asknankov)
+* Andrej Nankov [@asknankov] (https://github.com/nanorocks)
 * Aleksandar Babic [@Babic22] (https://github.com/Babic22)
