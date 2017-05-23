@@ -2,7 +2,7 @@
 
 ![alt text](https://lh4.googleusercontent.com/N6TjbCMUmLVew9QWJyumcfrhs4DjjToShDAwfOdB8PNCGbZMpE70ekFRRzqb9a2iydq4zUWDug=w271)
 
-#Introduction
+# Introduction
 
 The purpose of this document is to present a detailed description of the application for desktop computers Grindpipe. A detailed description will explain the features of the system, the user interface of the system, what the system will do the limitations under which he must work and how the system will react to external influences. This document is intended primarily to be offered to users for approval and as a reference for the development of the first version of the system development team
 
@@ -11,7 +11,7 @@ Grindpipe will be a software system designed to create collections of photos as 
 Specifically, this system will be designed to enable users to process images faster and do their collections in their PC. The system will include processing and rotate images, convert to different formats, increasing or reducing the size of images, convert images to black and white look. Additionally, the system will depend on the Windows operating systems and the ImageMagic application designed for windows operating systems.
 
 
-#General Description
+# General Description
 
 The application will be free and open source, licensed under the license of the General Public License. Also it will be specifically designed for computers running windows operating system and is based on an existing application, ImageMagic.
 
@@ -25,5 +25,5 @@ http://www.grindpipe.tk
 
 # GRINDPIPE
 Authors:
-* Andrej Nankov [@asknankov] (https://github.com/nanorocks)
+* Andrej Nankov [@nanorocks] (https://github.com/nanorocks)
 * Aleksandar Babic [@Babic22] (https://github.com/Babic22)
